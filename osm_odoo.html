@@ -1,0 +1,87 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+	<title></title>
+	<!--<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.2.0/ol.css" />
+    <link rel="stylesheet" href="./ol3-popup/ol3-popup.css" />
+    <link rel="stylesheet" href="./ol3-popup/popup.css" />-->
+	<script src="./OpenLayers/OpenLayers.js"></script>
+	<script>
+		var map, vectorLayer, selectedFeature;
+		var lat = 19.5386388;
+		var lon = -96.8948676;
+		var zoom = 12;
+		var curpos = new Array();
+		var position;
+
+		var fromProjection = new OpenLayers.Projection("EPSG:4326");
+		var toProjection = new OpenLayers.Projection("EPSG:900913");
+
+		var cntrposition = new OpenLayers.LonLat(lon, lat).transform(fromProjection, toProjection);
+
+		function init() {
+			map = new OpenLayers.Map("map"
+				/*, {
+					controls:
+						[
+							new OpenLayers.Control.PanZoomBar(),
+							new OpenLayers.Control.LayerSwitcher({}),
+							new OpenLayers.Control.Permalink(),
+							new OpenLayers.Control.MousePosition({}),
+							new OpenLayers.Control.ScaleLine(),
+							new OpenLayers.Control.OverviewMap(),
+						]
+				}*/
+			);
+			var mapnik = new OpenLayers.Layer.OSM("MAP");
+
+			map.addLayer(mapnik);
+			map.setCenter(cntrposition, zoom);
+
+			var click = new OpenLayers.Control.Click();
+			map.addControl(click);
+
+			click.activate();
+		};		
+
+		OpenLayers.Control.Click = OpenLayers.Class(OpenLayers.Control, {
+			defaultHandlerOptions: {
+				'single': true,
+				'double': false,
+				'pixelTolerance': 0,
+				'stopSingle': false,
+				'stopDouble': false
+			},
+
+			initialize: function (options) {
+				this.handlerOptions = OpenLayers.Util.extend(
+					{}, this.defaultHandlerOptions
+				);
+				OpenLayers.Control.prototype.initialize.apply(
+					this, arguments
+				);
+				this.handler = new OpenLayers.Handler.Click(
+					this, {
+					'click': this.trigger
+				}, this.handlerOptions
+				);
+			},
+
+			trigger: function (e) {
+				var lonlat = map.getLonLatFromPixel(e.xy);
+				lonlat1 = new OpenLayers.LonLat(lonlat.lon, lonlat.lat).transform(toProjection, fromProjection);
+				console.log("Longitud: ", lonlat1.lon, "Latitud: ", lonlat1.lat);
+			}
+		});
+	</script>
+</head>
+
+<body onload='init();'>
+	<div id="map" style="height: 300px;"></div>
+	<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.2.0/ol.js"></script>
+    <script src="./ol3-popup/ol3-popup.js"></script>
+    <script src="./ol3-popup/popup.js"></script>-->
+</body>
+
+</html>
