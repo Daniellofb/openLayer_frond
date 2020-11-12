@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>OpenLayers 3 - Popup</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.2.0/ol.css" />
+    <style type="text/css">
+      .ol-popup {
+          display: none;
+          position: absolute;
+          background-color: white;
+          padding: 15px 25px 15px 15px;
+          border: 1px solid #cccccc;
+          bottom: 12px;
+          left: -50px;
+      }
+
+      .ol-popup:after, .ol-popup:before {
+          top: 100%;
+          border: solid transparent;
+          content: " ";
+          height: 0;
+          width: 0;
+          position: absolute;
+          pointer-events: none;
+      }
+
+      .ol-popup:after {
+          border-top-color: white;
+          border-width: 10px;
+          left: 48px;
+          margin-left: -10px;
+      }
+
+      .ol-popup:before {
+          border-top-color: #cccccc;
+          border-width: 11px;
+          left: 48px;
+          margin-left: -11px;
+      }
+
+      .ol-popup-content {
+          min-width: 170px;
+          max-height: 200px;
+          overflow-x: auto;
+      }
+
+      .ol-popup-closer {
+          position: absolute;
+          top: 2px;
+          right: 2px;
+          font-size: 150%;
+          padding: 0 4px;
+          color: gray;
+          text-decoration: none;
+      }
+
+      .ol-popup-closer:after {
+          content: "\2716";
+      }
+
+      .ol-popup div.infoResult {
+          min-width: 130px;
+      }
+
+      .ol-popup div.infoResult p {
+          padding: 0.1em;
+          margin: 0;
+      }
+
+      .ol-popup-content h3 {
+          margin: 0.25em 0;
+      }
+
+      .ol-popup.marker {
+          margin-bottom: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.2.0/ol.js"></script>
+    <script>
+    (function (root, factory) {
+        if(typeof define === "function" && define.amd) {
+            define(["openlayers"], factory);
+        } else if(typeof module === "object" && module.exports) {
+            module.exports = factory(require("openlayers"));
+        } else {
+            root.LayerSwitcher = factory(root.ol);
+        }
+        }(this, function(ol) {
+            /**
+            * OpenLayers 3 Popup Overlay.
+            * See [the examples](./examples) for usage. Styling can be done via CSS.
+            * @constructor
+            * @extends {ol.Overlay}
+            * @param {Object} opt_options Overlay options
+            */
+            ol.Overlay.Popup = function(opt_options) {
+
+                var options = opt_options || {};
+
+                if (options.autoPan === undefined) {
+                    options.autoPan = true;
+                }
+
+                if (options.autoPanAnimation === undefined) {
+                    options.autoPanAnimation = {
+                        duration: 250
+                    };
+                }
+
+                this.container = document.createElement('div');
+                this.container.className = 'ol-popup';
+
+                this.closer = document.createElement('a');
+                this.closer.className = 'ol-popup-closer';
+                this.closer.href = '#';
+                this.container.appendChild(this.closer);
+
+                var that = this;
+                this.closer.addEventListener('click', function(evt) {
+                    that.container.style.display = 'none';
+                    that.closer.blur();
+                    evt.preventDefault();
+                }, false);
+
+                this.content = document.createElement('div');
+                this.content.className = 'ol-popup-content';
+                this.container.appendChild(this.content);
+
+                // Apply workaround to enable scrolling of content div on touch devices
+                ol.Overlay.Popup.enableTouchScroll_(this.content);
+
+                options.element = this.container;
+                ol.Overlay.call(this, options);
+
+            };
+
+            ol.inherits(ol.Overlay.Popup, ol.Overlay);
+
+            /**
+            * Show the popup.
+            * @param {ol.Coordinate} coord Where to anchor the popup.
+            * @param {String|HTMLElement} html String or element of HTML to display within the popup.
+            */
+            ol.Overlay.Popup.prototype.show = function(coord, html) {
+                if (html instanceof HTMLElement) {
+                    this.content.innerHTML = "";
+                    this.content.appendChild(html);
+                } else {
+                    this.content.innerHTML = html;
+                }
+                this.container.style.display = 'block';
+                this.content.scrollTop = 0;
+                this.setPosition(coord);
+                return this;
+            };
+
+            /**
+            * @private
+            * @desc Determine if the current browser supports touch events. Adapted from
+            * https://gist.github.com/chrismbarr/4107472
+            */
+            ol.Overlay.Popup.isTouchDevice_ = function() {
+                try {
+                    document.createEvent("TouchEvent");
+                    return true;
+                } catch(e) {
+                    return false;
+                }
+            };
+
+            /**
+            * @private
+            * @desc Apply workaround to enable scrolling of overflowing content within an
+            * element. Adapted from https://gist.github.com/chrismbarr/4107472
+            */
+            ol.Overlay.Popup.enableTouchScroll_ = function(elm) {
+                if(ol.Overlay.Popup.isTouchDevice_()){
+                    var scrollStartPos = 0;
+                    elm.addEventListener("touchstart", function(event) {
+                        scrollStartPos = this.scrollTop + event.touches[0].pageY;
+                    }, false);
+                    elm.addEventListener("touchmove", function(event) {
+                        this.scrollTop = scrollStartPos - event.touches[0].pageY;
+                    }, false);
+                }
+            };
+
+            /**
+            * Hide the popup.
+            */
+            ol.Overlay.Popup.prototype.hide = function() {
+                this.container.style.display = 'none';
+                return this;
+            };
+
+
+            /**
+            * Indicates if the popup is in open state
+            */
+            ol.Overlay.Popup.prototype.isOpened = function() {
+                return this.container.style.display == 'block';
+            };
+
+            var Popup = ol.Overlay.Popup;
+            return Popup;
+
+        }));
+    </script>
+    <script>
+        /*var gjsonObject = new ol.layer.Vector({
+            source: new ol.source.GeoJSON({
+                'type': 'Feature',
+                'geometry': {
+                    'type': 'Polygon',
+                    'coordinates': [[
+                        [-10790876.42776754, 2220876.5268908655], 
+                        [-10790863.737744555, 2220872.514453085], 
+                        [-10790874.813268516, 2220851.027361418], 
+                        [-10790881.184466215, 2220818.190870158], 
+                        [-10790878.0422749, 2220784.9547889195], 
+                        [-10790877.143696396, 2220761.468195089], 
+                        [-10790864.713755503, 2220731.4826248237], 
+                        [-10790851.746098738, 2220710.2276167814], 
+                        [-10790817.620679678, 2220706.684863222], 
+                        [-10790843.384305796, 2220628.7202093787], 
+                        [-10790845.605285611, 2220640.21947963], 
+                        [-10790856.664245995, 2220654.698874616], 
+                        [-10790864.710896425, 2220660.5381125156], 
+                        [-10790877.969653694, 2220664.418725557], 
+                        [-10790887.075795237, 2220663.879633198], 
+                        [-10790900.276719615, 2220656.8656046446], 
+                        [-10790907.770003552, 2220652.251992753], 
+                        [-10790948.323203415, 2220626.814824174], 
+                        [-10790920.475396873, 2220701.546370589], 
+                        [-10790928.989455933, 2220705.524857747], 
+                        [-10790926.747019479, 2220733.1925638146], 
+                        [-10790921.210868794, 2220751.5955133257], 
+                        [-10790876.42776754, 2220876.5268908655]
+                    ]]
+                }
+            })
+        });*/
+        var format = new ol.format.GeoJSON();
+        var features = format.readFeatures(JSON.parse(
+            `{
+                "type":"FeatureCollection",
+                "features":[
+                    {
+                        "type":"Feature",
+                        "geometry":
+                        {
+                            "type":"Polygon",
+                            "coordinates":[
+                                [
+                                    [1e6, -6e6],
+                                    [2e6, -4e6],
+                                    [3e6, -6e6]
+                                ] 
+                            ]
+                        }
+                    }
+                ]
+            }`  
+        ))
+
+        var vectorLayer = new ol.layer.Vector({
+            source: new ol.source.Vector({
+                features: features
+            })
+        })
+
+        var iconFeature = new ol.Feature({
+            geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8948676, 19.5386388])),
+            name: 'Somewhere near Nottingham',
+        });
+        
+        var map = new ol.Map({
+            target: 'map',
+            layers: [
+                new ol.layer.Tile({
+                    source: new ol.source.OSM()
+                }),
+                vectorLayer,
+                new ol.layer.Vector({
+                    source: new ol.source.Vector({
+                        features: [iconFeature]
+                    }),
+                    style: new ol.style.Style({
+                        image: new ol.style.Icon({
+                        anchor: [0.5, 46],
+                        anchorXUnits: 'fraction',
+                        anchorYUnits: 'pixels',
+                        src: 'https://openlayers.org/en/latest/examples/data/icon.png'
+                        })
+                    })
+                })
+            ],
+            view: new ol.View({
+                center: ol.proj.transform([-96.8948676, 19.5386388], 'EPSG:4326', 'EPSG:900913'),
+                zoom: 12
+            })
+        });
+
+        var popup = new ol.Overlay.Popup();
+        map.addOverlay(popup);
+
+        map.on('singleclick', function(evt) {
+            var prettyCoord = ol.coordinate.toStringHDMS(ol.proj.transform(evt.coordinate, 'EPSG:900913', 'EPSG:4326'), 2);
+            popup.show(evt.coordinate,
+                '<div>'+
+                    '<h2>Coordinates</h2>'+
+                    '<p> Longitud: ' + evt.coordinate[0] + '</p>'+
+                    '<p> Latitude: ' + evt.coordinate[1] + '</p>'+
+                '</div>'
+            );
+        });
+
+        /*map.on('postcompose',function(e){
+            document.querySelector('canvas').style.filter="invert(100%)";
+        });*/
+    </script>
+  </body>
+</html>
