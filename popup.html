@@ -82,7 +82,7 @@
 </head>
 
 <body>
-    <button type="button" style="margin: 0 0 10px 10px;" onclick="cargarColonias(['a', 'b', 'c'])">Colonias!</button>
+    <button type="button" style="margin: 0 0 10px 10px;" onclick="cargarColonias(['10 de Abril', 'Zona Universitaria', '12 de Diciembre'])">Colonias!</button>
     <div id="map"></div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/4.2.0/ol.js"></script>
     <script>
@@ -274,638 +274,1249 @@
         });
 
         function cargarColonias($carga) {
+            $carga.push('Close');
+            var arrayPush = [];
 
             $carga.forEach(
                 element => {
-                    var osm001= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9362794647078,19.5581161201811])), name: '10 de Abril',});
-                    var osm002= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.900997758843,19.5372708377806])), name: '10 de Mayo',});
-                    var osm003= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8997910355066,19.568087267794])), name: '12 de Diciembre',});
-                    var osm004= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9437945557494,19.5377233012009])), name: '14 de Febrero',});
-                    var osm005= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9029918926911,19.5682244893712])), name: '16 de Septiembre',});
-                    var osm006= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9335275576872,19.5699862284859])), name: '18 de Marzo',});
-                    var osm007= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9315305946929,19.5721680036222])), name: '21 de Marzo',});
-                    var osm008= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.898983594039,19.5605631835006])), name: '23 de Marzo',});
-                    var osm009= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.947606562286,19.5507322855666])), name: '24 de Abril',});
-                    var osm010= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8984135659179,19.5558756648471])), name: '26 de Agosto',});
-                    var osm011= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9001208638639,19.5711624532499])), name: '2 de Julio',});
-                    var osm012= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9423350514759,19.5314390596933])), name: '3 de Mayo',});
-                    var osm013= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9103156584175,19.5487819074631])), name: '7 de Noviembre',});
-                    var osm014= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9450875605114,19.5434161818066])), name: 'Acueducto',});
-                    var osm015= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8798207491844,19.5190949783684])), name: 'Acueducto Animas',});
-                    var osm016= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9263020706409,19.5247665658184])), name: 'Adalberto Tejeda',});
-                    var osm017= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9366978749308,19.5477302990919])), name: 'Adolfo López Mateos',});
-                    var osm018= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.876172168802,19.5263556459553])), name: 'Agrícola',});
-                    var osm019= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9224846936919,19.5426839159177])), name: 'Aguacatal',});
-                    var osm020= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8955793043861,19.5371992974073])), name: 'Agua Clara',});
-                    var osm021= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9024725413191,19.5278027804315])), name: 'Agua Santa',});
-                    var osm022= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9005848619136,19.5309732656108])), name: 'Agua Santa II',});
-                    var osm023= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9496195435671,19.5596248265902])), name: 'Altamira',});
-                    var osm024= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8980247236419,19.5220704381136])), name: 'Álvaro Obregón',});
-                    var osm025= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.931506142651,19.5774100333785])), name: 'Ampliación 21 de Marzo',});
-                    var osm026= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9319034473793,19.5137402903042])), name: 'Ampliación Libertad',});
-                    var osm027= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9409948223699,19.5663994230247])), name: 'Ampliación Renacimiento',});
-                    var osm028= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9024412368757,19.5711684803686])), name: 'Ampliación Vasconcelos',});
-                    var osm029= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8765634066039,19.523930170856])), name: 'Anáhuac',});
-                    var osm030= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.901969285356,19.5470707391418])), name: 'Arboledas del Sumidero',});
-                    var osm031= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9023526379581,19.5475348791148])), name: 'Arboledas del Sumidero',});
-                    var osm032= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8981447643677,19.5666677808432])), name: 'Arboledas del Tronconal',});
-                    var osm033= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9041603575927,19.5437260707311])), name: 'Arboledas de Xalapa',});
-                    var osm034= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9432252388377,19.5351283071336])), name: 'Arroyo Blanco',});
-                    var osm035= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9360629594858,19.5708278032187])), name: 'Arroyo Zarco',});
-                    var osm036= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8928943230668,19.5670282751981])), name: 'Aviación Civil',});
-                    var osm037= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8964510996045,19.5687588071621])), name: 'Aviación Civil',});
-                    var osm038= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9007535778705,19.5353171812855])), name: 'Azteca',});
-                    var osm039= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.899773321226,19.5288642898852])), name: 'Badillo',});
-                    var osm040= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8685011712194,19.5107688317091])), name: 'Balcones de Xalapa',});
-                    var osm041= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9474319842683,19.5370134923237])), name: 'Barranca Honda',});
-                    var osm042= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9318017221814,19.5283775345597])), name: 'Belisario Domínguez',});
-                    var osm043= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9096779404628,19.5163436614032])), name: 'Bella Vista',});
-                    var osm044= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9387136123577,19.5218296667259])), name: 'Benito Juárez',});
-                    var osm045= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9371792296212,19.5755388958325])), name: 'Brisas del Río Sede',});
-                    var osm046= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9279464548367,19.5166247717091])), name: 'Buena Vista',});
-                    var osm047= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9266027215016,19.5138877777505])), name: 'Buena Vista I',});
-                    var osm048= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9278283806665,19.5101815135075])), name: 'Buena Vista II',});
-                    var osm049= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8998554436416,19.5551883604731])), name: 'Bugambilias de Xalapa',});
-                    var osm050= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9170780092707,19.5471835828367])), name: 'Burócrata Federal',});
-                    var osm051= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9149156764065,19.5174728875789])), name: 'Caminos',});
-                    var osm052= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.899486026097,19.5044774333176])), name: 'Campestre',});
-                    var osm053= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9021181802774,19.5667776440634])), name: 'Campo de Tiro',});
-                    var osm054= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8900636428683,19.5136429760145])), name: 'Campo Nuevo',});
-                    var osm055= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8749153593347,19.5230750017767])), name: 'Cañada las Animas',});
-                    var osm056= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9071845243309,19.5611454834148])), name: 'Carolino Anaya',});
-                    var osm057= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8941081583572,19.5476084147129])), name: 'Casa Blanca',});
-                    var osm058= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9425841353835,19.540043186586])), name: 'Cerro Colorado',});
-                    var osm059= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9365667023346,19.5301799292474])), name: 'Chulavista',});
-                    var osm060= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8898809957984,19.5518301995069])), name: 'Cincuentenario Casa Blanca',});
-                    var osm061= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9476336959401,19.5235801917457])), name: 'Coapexpan',});
-                    var osm062= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8945206863588,19.5251307797842])), name: 'Colibris',});
-                    var osm063= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9530624819765,19.5590655340448])), name: 'Comercio',});
-                    var osm064= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8962946660264,19.5590615286465])), name: 'Constitución del Sumidero',});
-                    var osm065= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.898324380162,19.5365093767856])), name: 'Constituyentes',});
-                    var osm066= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9012596352258,19.5569837297728])), name: 'Continental',});
-                    var osm067= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9081442874802,19.5206275676012])), name: 'Cuauhtémoc',});
-                    var osm068= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9056789466665,19.5662717532126])), name: 'Culturas Mexicanas',});
-                    var osm069= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9456549352746,19.5402073141819])), name: 'Dante Delgado Ranauro',});
-                    var osm070= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9310288311741,19.5625513530051])), name: 'Del Bosque',});
-                    var osm071= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9087024563583,19.5562997635123])), name: 'Del Bosque Ferrocarrilero',});
-                    var osm072= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9242324581951,19.5410799671607])), name: 'Del Maestro',});
-                    var osm073= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9100345966237,19.5722905143762])), name: 'Del Moral',});
-                    var osm074= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9263552452633,19.5782401792962])), name: 'Del Periodista',});
-                    var osm075= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9079323402944,19.519614654788])), name: 'Del Valle',});
-                    var osm076= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.948320496095,19.5484318421675])), name: 'Desarrollo Social San Bruno',});
-                    var osm077= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9462264492746,19.5646668633206])), name: 'Diamante',});
-                    var osm078= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9474222162195,19.5632483486352])), name: 'Dolores Hidalgo',});
-                    var osm079= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9105322065367,19.5322633076197])), name: 'Dos de Abril',});
-                    var osm080= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8953867826611,19.5524115226396])), name: 'El Arroyo',});
-                    var osm081= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.901969285356,19.5470707391418])), name: 'El Cafetal',});
-                    var osm082= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8905136499231,19.5534924511434])), name: 'El Cafetal',});
-                    var osm083= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.900304835895,19.5539612850787])), name: 'El Coyol',});
-                    var osm084= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9132836130727,19.521598840911])), name: 'Electricistas',});
-                    var osm085= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.941153537739,19.5203460932981])), name: 'El Haya',});
-                    var osm086= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9448805637276,19.5166624723047])), name: 'El Haya',});
-                    var osm087= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9110521812039,19.540691545858])), name: 'El Mirador',});
-                    var osm088= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.886646886973,19.5557650443566])), name: 'El Nacimiento',});
-                    var osm089= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9177275720476,19.5767146590982])), name: 'El Naranjal de Agua Santa',});
-                    var osm090= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8642243775766,19.5103365952334])), name: 'El Olmo',});
-                    var osm091= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9368816482185,19.5538712931012])), name: 'El Pocito',});
-                    var osm092= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9379728655864,19.5645246636739])), name: 'El Porvenir',});
-                    var osm093= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8976091521391,19.5527551140632])), name: 'El Sumidero',});
-                    var osm094= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8935579864983,19.5563226598071])), name: 'El Tanque',});
-                    var osm095= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9400897730042,19.5185818319058])), name: 'El Tucán',});
-                    var osm096= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9215196588144,19.5109268249362])), name: 'Emiliano Zapata',});
-                    var osm097= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9266337239287,19.5058003679592])), name: 'Emiliano Zapata',});
-                    var osm098= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9382669676687,19.5475182906288])), name: 'Empleados Municipales',});
-                    var osm099= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8980722092815,19.5589709057796])), name: 'Encanto del Sumidero',});
-                    var osm100= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9072948952119,19.5340930405554])), name: 'Encinal',});
-                    var osm101= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8922694179672,19.557614489026])), name: 'Encinos',});
-                    var osm102= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9123794563061,19.525667642947])), name: 'Ensueño',});
-                    var osm103= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9379163802146,19.5299978282534])), name: 'Estibadores',});
-                    var osm104= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9154699719489,19.5468753778519])), name: 'Federal',});
-                    var osm105= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9236939581163,19.5205255105746])), name: 'Felipe Carrillo Puerto',});
-                    var osm106= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9143974340352,19.5540438473004])), name: 'Ferrocarrilera',});
-                    var osm107= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8906711799473,19.5429226917032])), name: 'Flores de Casa Blanca',});
-                    var osm108= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9035013014835,19.5593429112731])), name: 'Floresta',});
-                    var osm109= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9403627297602,19.5485446269421])), name: 'FOVISSSTE',});
-                    var osm110= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9371425583434,19.5616925238963])), name: 'Framboyanes',});
-                    var osm111= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9376771007768,19.5398612986672])), name: 'Francisco Ferrer Guardia',});
-                    var osm112= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9317412685565,19.5214417033797])), name: 'francisco I. MADERO',});
-                    var osm113= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9063093498915,19.5398997372086])), name: 'Francisco Villa',});
-                    var osm114= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8883365967315,19.5285148971513])), name: 'Fuentes de Las Animas',});
-                    var osm115= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9334539237976,19.5300997804557])), name: 'Guadalupe Rodríguez',});
-                    var osm116= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9566537115993,19.5520405246039])), name: 'Guadalupe Victoria',});
-                    var osm117= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9013837254726,19.573249051633])), name: 'Heberto Castillo Martínez',});
-                    var osm118= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9116396498982,19.5582971767151])), name: 'Héroes Ferrocarrileros',});
-                    var osm119= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.899873939309,19.5436211643447])), name: 'Herón Proal',});
-                    var osm120= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8866355933116,19.5496402103477])), name: 'Higueras',});
-                    var osm121= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9078055254188,19.5490045074323])), name: 'Hogares Ferrocarrileros',});
-                    var osm122= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8894128451772,19.5527444448307])), name: 'Huizachal',});
-                    var osm123= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8910796615515,19.5326827615326])), name: 'Indeco Animas',});
-                    var osm124= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9511094147057,19.5651388467083])), name: 'Independencia',});
-                    var osm125= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9085161171375,19.5443380553426])), name: 'Independencia',});
-                    var osm126= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9156884288279,19.5412377244094])), name: 'INFONAVIT Loma Alta',});
-                    var osm127= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9058460612655,19.5293663249673])), name: 'INFONAVIT Pomona',});
-                    var osm128= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9037787596888,19.5281024936584])), name: 'Ingeniero Rivadeneyra',});
-                    var osm129= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8963136823599,19.5290521728322])), name: 'INMECAFE',});
-                    var osm130= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9425118978686,19.5700298341864])), name: 'Insurgentes',});
-                    var osm131= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9011440760427,19.5675863238768])), name: 'Internacional',});
-                    var osm132= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9357057028929,19.5545767504597])), name: 'Isauro Acosta',});
-                    var osm133= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9205597246209,19.5153292169388])), name: 'Isleta',});
-                    var osm134= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8888798722906,19.555804149663])), name: 'Jacarandas',});
-                    var osm135= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8942082666274,19.5359734831499])), name: 'Jardines de Augusto',});
-                    var osm136= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8954202937822,19.5333373456494])), name: 'Jardines de Bambú',});
-                    var osm137= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8945939482065,19.5082891251156])), name: 'Jardines de la Pradera',});
-                    var osm138= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8825500442413,19.5254579798188])), name: 'Jardines de Las Animas',});
-                    var osm139= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.897320289452,19.534174497666])), name: 'Jardines de Las Flores 2000',});
-                    var osm140= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8955942005722,19.5549989701302])), name: 'Jardines del Castillo',});
-                    var osm141= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8979728324423,19.5014148305452])), name: 'Jardines de Santa Rosa',});
-                    var osm142= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9062463148223,19.5447214229524])), name: 'Jardines de Xalapa',});
-                    var osm143= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9397292298265,19.5314604180786])), name: 'J. J. Panes',});
-                    var osm144= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9179413102372,19.5393084179041])), name: 'José Cardel',});
-                    var osm145= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.944873040309,19.5370706631588])), name: 'Josefa Ortiz de Domínguez',});
-                    var osm146= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9095880657509,19.568868930683])), name: 'José Vasconcelos',});
-                    var osm147= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9142041877116,19.5440728478939])), name: 'Juan de la Luz Enríquez',});
-                    var osm148= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9180596930904,19.5433503667159])), name: 'Laderas del Macuiltepetl',});
-                    var osm149= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9266912319953,19.567193667609])), name: 'La Lagunilla',});
-                    var osm150= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8957159139943,19.5108038962047])), name: 'La Loma',});
-                    var osm151= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9266337239287,19.5058003679592])), name: 'La Morera',});
-                    var osm152= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9450610481491,19.5495384543486])), name: 'La Pedreguera',});
-                    var osm153= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9078719902664,19.5303493594783])), name: 'La Piedad',});
-                    var osm154= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9024576423407,19.5587317011837])), name: 'Las Águilas',});
-                    var osm155= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8996720427824,19.5584610036738])), name: 'Las Águilas II',});
-                    var osm156= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9038392819671,19.5293931258857])), name: 'Las Arboledas',});
-                    var osm157= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9007141071344,19.5592881610335])), name: 'Las Brisas',});
-                    var osm158= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9427962077478,19.5429562645351])), name: 'Las Flores',});
-                    var osm159= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8857541835196,19.5333072828911])), name: 'Las Flores',});
-                    var osm160= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9019618549611,19.551398244828])), name: 'Las Jacarandas',});
-                    var osm161= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8995639356168,19.5067457510674])), name: 'Las Margaritas',});
-                    var osm162= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8971681257437,19.556772890444])), name: 'Las Minas',});
-                    var osm163= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8875927666512,19.5581008055672])), name: 'Las Torres',});
-                    var osm164= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9022768786106,19.5379607318966])), name: 'Lázaro Cárdenas',});
-                    var osm165= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8833381757128,19.5519278844781])), name: 'Lealtad Institucional',});
-                    var osm166= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9345716312601,19.5181326403777])), name: 'Libertad',});
-                    var osm167= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8943444566282,19.5307624902789])), name: 'Loma Alta',});
-                    var osm168= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8865419322045,19.5453794024295])), name: 'Lomas de Casa Blanca Sector Higueras',});
-                    var osm169= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9542603479054,19.5564109281438])), name: 'Lomas de Chapultepec',});
-                    var osm170= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9175665048534,19.5202126924364])), name: 'Lomas del Estadio',});
-                    var osm171= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9030065201171,19.5023074521132])), name: 'Lomas del Paraíso',});
-                    var osm172= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9086612674207,19.51148468532])), name: 'Lomas del Paraíso',});
-                    var osm173= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9153917306961,19.5773860207764])), name: 'Lomas del Sedeño',});
-                    var osm174= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9431578468953,19.5548297684992])), name: 'Lomas del Seminario',});
-                    var osm175= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8914704335307,19.5560175624992])), name: 'Lomas del Sumidero',});
-                    var osm176= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.902804300273,19.5201873380294])), name: 'Lomas del Tejar',});
-                    var osm177= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8808163392941,19.519676694966])), name: 'Lomas de Oro',});
-                    var osm178= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9379105483882,19.5546315931671])), name: 'Lomas de San Roque',});
-                    var osm179= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.896940436456,19.4985372327803])), name: 'Lomas las Margaritas',});
-                    var osm180= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8958923814889,19.5070611819485])), name: 'Lomas Verdes',});
-                    var osm181= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8953010312409,19.4996959862208])), name: 'Lomas Verdes',});
-                    var osm182= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9100801482939,19.5264192325398])), name: 'Los Ángeles',});
-                    var osm183= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9494644990797,19.554106659241])), name: 'Los Encinos',});
-                    var osm184= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9215214636851,19.5164224958079])), name: 'Los Lagos',});
-                    var osm185= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9108602563742,19.5362846670117])), name: 'Los Laureles',});
-                    var osm186= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9417493371272,19.5442038687384])), name: 'Los Pinos',});
-                    var osm187= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.911463652494,19.5122403433865])), name: 'Los Pinos',});
-                    var osm188= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9087067574728,19.5659856410124])), name: 'Los Prados',});
-                    var osm189= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8951648987389,19.5363116022708])), name: 'Los Reyes',});
-                    var osm190= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9319579419918,19.5266420418847])), name: 'Los Sauces',});
-                    var osm191= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9221745643523,19.5764579207906])), name: 'Lucas Martín',});
-                    var osm192= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9494794331965,19.5694148376879])), name: 'Luis Donaldo Colosio',});
-                    var osm193= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9526710441502,19.5509250343641])), name: 'Luz del Barrio',});
-                    var osm194= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9433614158156,19.5652578233716])), name: 'Manantiales',});
-                    var osm195= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9402420916662,19.5641216687915])), name: 'Manantiales',});
-                    var osm196= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.913833774766,19.5236050220762])), name: 'Marco Antonio Muñoz',});
-                    var osm197= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9424259322423,19.5207670313134])), name: 'Marco Antonio Muñoz',});
-                    var osm198= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9054082402724,19.55431340929])), name: 'Margarita Maza de Juárez',});
-                    var osm199= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9037488203878,19.5564516760917])), name: 'Margarita Maza de Juárez',});
-                    var osm200= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9151938715372,19.53435940991])), name: 'María Esther',});
-                    var osm201= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9080101887048,19.5087433792068])), name: 'Mártires de Chicago',});
-                    var osm202= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9086612674207,19.51148468532])), name: 'Mártires de Chicago',});
-                    var osm203= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.911463652494,19.5122403433865])), name: 'Mártires de Chicago',});
-                    var osm204= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8995137657961,19.5647084610757])), name: 'MAVER',});
-                    var osm205= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9352697291124,19.5690787638021])), name: 'Mesa del Guayabo',});
-                    var osm206= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9138389028857,19.5748151600172])), name: 'México',});
-                    var osm207= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8940481429854,19.5337292593661])), name: 'Miguel Alemán Valdez',});
-                    var osm208= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9129456658942,19.5472602020716])), name: 'Miguel Hidalgo y Costilla',});
-                    var osm209= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8966246146401,19.5600154579824])), name: 'Miradores de las Flores',});
-                    var osm210= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8997554159515,19.5572966331153])), name: 'Miradores del Sumidero',});
-                    var osm211= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9499926706751,19.5678886903554])), name: 'Miradores de San Roque',});
-                    var osm212= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8941971807278,19.5013469676732])), name: 'Miradores de Santa Rosa',});
-                    var osm213= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9123754453538,19.5391146706465])), name: 'Misión San Carlos',});
-                    var osm214= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9096668414559,19.52816658598])), name: 'Modelo',});
-                    var osm215= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9464608564766,19.5465479606983])), name: 'Monte Video',});
-                    var osm216= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9036440566041,19.5511314166466])), name: 'Morelos',});
-                    var osm217= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9034712419552,19.5533981737006])), name: 'Morelos',});
-                    var osm218= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9017266268233,19.5621561672757])), name: 'Nacional',});
-                    var osm219= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.938328591422,19.5659180172327])), name: 'Nahuiollin',});
-                    var osm220= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9370242845894,19.5597285041423])), name: 'Ni0os Héroes',});
-                    var osm221= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9011069996023,19.5168248998393])), name: 'Nueva Xalapa',});
-                    var osm222= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8962295608231,19.5623156771913])), name: 'Nuevo Sol',});
-                    var osm223= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8987407233217,19.5094961874311])), name: 'Nuevo Xalapa',});
-                    var osm224= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9333161174055,19.5452843592654])), name: 'Obrero Campesina',});
-                    var osm225= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9036226572239,19.5663171903462])), name: 'Obrero Mundial',});
-                    var osm226= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9151599849698,19.520703258013])), name: 'Obreros Textiles',});
-                    var osm227= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8719737031165,19.5147156763774])), name: 'Olmos de Las Animas',});
-                    var osm228= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8819451483051,19.5149383590283])), name: 'Pastoresa',});
-                    var osm229= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8813184189917,19.53186184796])), name: 'Pedregal de Las Animas',});
-                    var osm230= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9022107282267,19.5420509535599])), name: 'Peñascal',});
-                    var osm231= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.945938077732,19.5623118402432])), name: 'Plan de Ayala',});
-                    var osm232= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9036495770675,19.5690263083595])), name: 'Portón Colorado',});
-                    var osm233= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9333621508212,19.565742038674])), name: 'Porvenir Dos',});
-                    var osm234= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9064102870742,19.5526716852165])), name: 'Predio de la Virgen',});
-                    var osm235= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9049584029148,19.5482152173311])), name: 'Predio de la Virgen',});
-                    var osm236= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9046442034319,19.5572328122118])), name: 'Predio Palo Blanco',});
-                    var osm237= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9421797430388,19.5474245233621])), name: 'Presa de San Bruno',});
-                    var osm238= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9434308083122,19.5484907682761])), name: 'Presa de San Bruno',});
-                    var osm239= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9220732376311,19.5506082221692])), name: 'Progreso Macuiltepetl',});
-                    var osm240= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9444695835483,19.566242413292])), name: 'Prolongación El Diamante',});
-                    var osm241= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.889710420541,19.5533088875461])), name: 'PROVIPO',});
-                    var osm242= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9105467606815,19.5301717291575])), name: 'Pumar',});
-                    var osm243= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9341112622701,19.5609739259663])), name: 'Rafael Hernández Ochoa',});
-                    var osm244= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.897066440911,19.5703579249915])), name: 'Rafael Hernández Villalpando',});
-                    var osm245= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9205038596725,19.5613082130017])), name: 'Rafael Lucio',});
-                    var osm246= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9342912490297,19.5548342065475])), name: 'Rafael Murillo Vidal',});
-                    var osm247= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.93352009116,19.5585501074669])), name: 'Rafael Murillo Vidal',});
-                    var osm248= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8715830661635,19.5180749702464])), name: 'Real del Bosque',});
-                    var osm249= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8848326655519,19.5383628330672])), name: 'Rebombeo de Las Animas',});
-                    var osm250= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8857772138573,19.5360040945893])), name: 'Rebombeo de Las Animas',});
-                    var osm251= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9316253124949,19.5173292177599])), name: 'Reforma',});
-                    var osm252= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9354127938786,19.5320286545011])), name: 'Represa del Carmen',});
-                    var osm253= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9012155857789,19.5025963469731])), name: 'Residencial Mirador',});
-                    var osm254= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9192077148399,19.5706321387499])), name: 'Revolución',});
-                    var osm255= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8899714075042,19.5545940914892])), name: 'Rotaria',});
-                    var osm256= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9130217563958,19.5644977114656])), name: 'Rubén Pabello Acosta',});
-                    var osm257= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9466519244213,19.559632998223])), name: 'Rubén R. Jaramillo',});
-                    var osm258= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.878808839706,19.5109710136662])), name: 'Rubí Animas',});
-                    var osm259= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.875150471318,19.5142468336916])), name: 'Rubí Animas',});
-                    var osm260= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8937607032216,19.5279678856366])), name: 'SAHOP',});
-                    var osm261= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9353171820956,19.5278110446582])), name: 'Salud',});
-                    var osm262= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9041709221579,19.5408356175775])), name: 'Salvador Díaz Mirón',});
-                    var osm263= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8959248144311,19.5030512670914])), name: 'Santa Rosa',});
-                    var osm264= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9041191526929,19.5351765036141])), name: 'Sebastián Lerdo de Tejada',});
-                    var osm265= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8996638569959,19.5028724273134])), name: 'Segunda  Sección Jardines de Santa Rosa',});
-                    var osm266= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8935754154134,19.525734371317])), name: 'SIPEH Animas',});
-                    var osm267= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8945206863588,19.5251307797842])), name: 'SIPEH Animas',});
-                    var osm268= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9365783471693,19.5679551864062])), name: 'Solidaridad',});
-                    var osm269= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9154244164832,19.5648825456322])), name: 'Sostenes M. Blanco',});
-                    var osm270= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8996069382111,19.5495878777943])), name: 'Sumidero',});
-                    var osm271= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9101030841133,19.5627947418528])), name: 'Tabasco',});
-                    var osm272= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9357463775971,19.534620381857])), name: 'Tamborrel',});
-                    var osm273= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9068500330498,19.5239562928707])), name: 'Tatahuicapan',});
-                    var osm274= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8681797019235,19.5273772941482])), name: 'Tulipanes de la Animas',});
-                    var osm275= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9509765418717,19.5567934910198])), name: 'UCISVER',});
-                    var osm276= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8840144423061,19.5506741115877])), name: 'UDICV',});
-                    var osm277= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9488560857029,19.557063401563])), name: 'UNE-PRI',});
-                    var osm278= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8865957928828,19.5412621222571])), name: 'Unidad Deportiva El Castillo',});
-                    var osm279= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.917104750376,19.5412773748641])), name: 'Unidad Jardín',});
-                    var osm280= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9318564850623,19.5528926731541])), name: 'Unidad Magisterial',});
-                    var osm281= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9515920776763,19.5526769197212])), name: 'Unidad y Trabajo',});
-                    var osm282= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9021425079526,19.5546164413879])), name: 'Unión',});
-                    var osm283= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9041514519477,19.5534077183401])), name: 'Unión',});
-                    var osm284= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9102804430142,19.5548587396874])), name: 'Unión Ferrocarrilera',});
-                    var osm285= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8777071719595,19.5213661417245])), name: 'Valle Anáhuac',});
-                    var osm286= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9014283192429,19.5444952552178])), name: 'Valle de Cristal',});
-                    var osm287= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9158128005499,19.5752845046963])), name: 'Valle de los Pinos',});
-                    var osm288= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9471409853189,19.5427190222693])), name: 'Valle del Sol',});
-                    var osm289= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9017482360999,19.532067757906])), name: 'Vanguardia Revolucionaria',});
-                    var osm290= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9274675012348,19.5223158683556])), name: 'Venustiano Carranza',});
-                    var osm291= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9437534253259,19.5613580715124])), name: 'Veracruz',});
-                    var osm292= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9299270422797,19.5399522489672])), name: 'Veracruz',});
-                    var osm293= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9320501561671,19.5336878677419])), name: 'Veracruzana',});
-                    var osm294= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8962295608231,19.5623156771913])), name: 'Vicente Guerrero',});
-                    var osm295= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8968103955023,19.5629338496359])), name: 'Vicente Guerrero',});
-                    var osm296= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9396641459186,19.5658748425321])), name: 'Victimas del 6 de Septiembre',});
-                    var osm297= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9456914890336,19.5346373817557])), name: 'Villareal',});
-                    var osm298= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9301218896642,19.559401475698])), name: 'Virginia Cordero de Murillo Vidal',});
-                    var osm299= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8819081732292,19.5208061787498])), name: 'Vista Hermosa',});
-                    var osm300= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8819081732292,19.5208061787498])), name: 'Vista Hermosa',});
-                    var osm301= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8828946423306,19.5208750883235])), name: 'Vista Hermosa',});
-                    var osm302= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9188301604897,19.5450636241935])), name: 'Voceadores',});
-                    var osm303= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9031876339014,19.5115499639683])), name: 'Xalapa 2000',});
-                    var osm304= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.921555408611,19.5296275265555])), name: 'Zona Centro',});
-                    var osm305= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9158790918515,19.5142276446443])), name: 'Zona Universitaria',});
+                    if (element == '10 de Abril') {
+                        //var osm001= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9362794647078,19.5581161201811])), name: '10 de Abril',});
+                        arrayPush.push(new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9362794647078,19.5581161201811])), name: '10 de Abril',}));
+                    }
+                    if (element == '10 de Mayo') {
+                        var osm002= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.900997758843,19.5372708377806])), name: '10 de Mayo',});
+                        arrayPush.push(osm002);
+                    }
+                    if (element == '12 de Diciembre') {
+                        var osm003= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8997910355066,19.568087267794])), name: '12 de Diciembre',});
+                        arrayPush.push(osm003);
+                    }
+                    if (element == '14 de Febrero') {
+                        var osm004= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9437945557494,19.5377233012009])), name: '14 de Febrero',});
+                        arrayPush.push(osm004);
+                    }
+                    if (element == '16 de Septiembre') {
+                        var osm005= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9029918926911,19.5682244893712])), name: '16 de Septiembre',});
+                        arrayPush.push(osm005);
+                    }
+                    if (element == '18 de Marzo') {
+                        var osm006= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9335275576872,19.5699862284859])), name: '18 de Marzo',});
+                        arrayPush.push(osm006);
+                    }
+                    if (element == '21 de Marzo') {
+                        var osm007= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9315305946929,19.5721680036222])), name: '21 de Marzo',});
+                        arrayPush.push(osm007);
+                    }
+                    if (element == '23 de Marzo') {
+                        var osm008= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.898983594039,19.5605631835006])), name: '23 de Marzo',});
+                        arrayPush.push(osm008);
+                    }
+                    if (element == '24 de Abril') {
+                        var osm009= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.947606562286,19.5507322855666])), name: '24 de Abril',});
+                        arrayPush.push(osm009);
+                    }
+                    if (element == '26 de Agosto') {
+                        var osm010= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8984135659179,19.5558756648471])), name: '26 de Agosto',});
+                        arrayPush.push(osm010);
+                    }
+                    if (element == '2 de Julio') {
+                        var osm011= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9001208638639,19.5711624532499])), name: '2 de Julio',});
+                        arrayPush.push(osm011);
+                    }
+                    if (element == '3 de Mayo') {
+                        var osm012= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9423350514759,19.5314390596933])), name: '3 de Mayo',});
+                        arrayPush.push(osm012);
+                    }
+                    if (element == '7 de Noviembre') {
+                        var osm013= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9103156584175,19.5487819074631])), name: '7 de Noviembre',});
+                        arrayPush.push(osm013);
+                    }
+                    if (element == 'Acueducto') {
+                        var osm014= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9450875605114,19.5434161818066])), name: 'Acueducto',});
+                        arrayPush.push(osm014);
+                    }
+                    if (element == 'Acueducto Animas') {
+                        var osm015= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8798207491844,19.5190949783684])), name: 'Acueducto Animas',});
+                        arrayPush.push(osm015);
+                    }
+                    if (element == 'Adalberto Tejeda') {
+                        var osm016= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9263020706409,19.5247665658184])), name: 'Adalberto Tejeda',});
+                        arrayPush.push(osm016);
+                    }
+                    if (element == 'Adolfo López Mateos') {
+                        var osm017= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9366978749308,19.5477302990919])), name: 'Adolfo López Mateos',});
+                        arrayPush.push(osm017);
+                    }
+                    if (element == 'Agrícola') {
+                        var osm018= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.876172168802,19.5263556459553])), name: 'Agrícola',});
+                        arrayPush.push(osm018);
+                    }
+                    if (element == 'Aguacatal') {
+                        var osm019= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9224846936919,19.5426839159177])), name: 'Aguacatal',});
+                        arrayPush.push(osm019);
+                    }
+                    if (element == 'Agua Clara') {
+                        var osm020= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8955793043861,19.5371992974073])), name: 'Agua Clara',});
+                        arrayPush.push(osm020);
+                    }
+                    if (element == 'Agua Santa') {
+                        var osm021= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9024725413191,19.5278027804315])), name: 'Agua Santa',});
+                        arrayPush.push(osm021);
+                    }
+                    if (element == 'Agua Santa II') {
+                        var osm022= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9005848619136,19.5309732656108])), name: 'Agua Santa II',});
+                        arrayPush.push(osm022);
+                    }
+                    if (element == 'Altamira') {
+                        var osm023= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9496195435671,19.5596248265902])), name: 'Altamira',});
+                        arrayPush.push(osm023);
+                    }
+                    if (element == 'Álvaro Obregón') {
+                        var osm024= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8980247236419,19.5220704381136])), name: 'Álvaro Obregón',});
+                        arrayPush.push(osm024);
+                    }
+                    if (element == 'Ampliación 21 de Marzo') {
+                        var osm025= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.931506142651,19.5774100333785])), name: 'Ampliación 21 de Marzo',});
+                        arrayPush.push(osm025);
+                    }
+                    if (element == 'Ampliación Libertad') {
+                        var osm026= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9319034473793,19.5137402903042])), name: 'Ampliación Libertad',});
+                        arrayPush.push(osm026);
+                    }
+                    if (element == 'Ampliación Renacimiento') {
+                        var osm027= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9409948223699,19.5663994230247])), name: 'Ampliación Renacimiento',});
+                        arrayPush.push(osm027);
+                    }
+                    if (element == 'Ampliación Vasconcelos') {
+                        var osm028= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9024412368757,19.5711684803686])), name: 'Ampliación Vasconcelos',});
+                        arrayPush.push(osm028);
+                    }
+                    if (element == 'Anáhuac') {
+                        var osm029= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8765634066039,19.523930170856])), name: 'Anáhuac',});
+                        arrayPush.push(osm029);
+                    }
+                    if (element == 'Arboledas del Sumidero') {
+                        var osm030= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.901969285356,19.5470707391418])), name: 'Arboledas del Sumidero',});
+                        arrayPush.push(osm030);
+                    }
+                    if (element == 'Arboledas del Sumidero') {
+                        var osm031= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9023526379581,19.5475348791148])), name: 'Arboledas del Sumidero',});
+                        arrayPush.push(osm031);
+                    }
+                    if (element == 'Arboledas del Tronconal') {
+                        var osm032= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8981447643677,19.5666677808432])), name: 'Arboledas del Tronconal',});
+                        arrayPush.push(osm032);
+                    }
+                    if (element == 'Arboledas de Xalapa') {
+                        var osm033= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9041603575927,19.5437260707311])), name: 'Arboledas de Xalapa',});
+                        arrayPush.push(osm033);
+                    }
+                    if (element == 'Arroyo Blanco') {
+                        var osm034= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9432252388377,19.5351283071336])), name: 'Arroyo Blanco',});
+                        arrayPush.push(osm034);
+                    }
+                    if (element == 'Arroyo Zarco') {
+                        var osm035= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9360629594858,19.5708278032187])), name: 'Arroyo Zarco',});
+                        arrayPush.push(osm035);
+                    }
+                    if (element == 'Aviación Civil') {
+                        var osm036= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8928943230668,19.5670282751981])), name: 'Aviación Civil',});
+                        arrayPush.push(osm036);
+                    }
+                    if (element == 'Aviación Civil') {
+                        var osm037= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8964510996045,19.5687588071621])), name: 'Aviación Civil',});
+                        arrayPush.push(osm037);
+                    }
+                    if (element == 'Azteca') {
+                        var osm038= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9007535778705,19.5353171812855])), name: 'Azteca',});
+                        arrayPush.push(osm038);
+                    }
+                    if (element == 'Badillo') {
+                        var osm039= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.899773321226,19.5288642898852])), name: 'Badillo',});
+                        arrayPush.push(osm039);
+                    }
+                    if (element == 'Balcones de Xalapa') {
+                        var osm040= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8685011712194,19.5107688317091])), name: 'Balcones de Xalapa',});
+                        arrayPush.push(osm040);
+                    }
+                    if (element == 'Barranca Honda') {
+                        var osm041= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9474319842683,19.5370134923237])), name: 'Barranca Honda',});
+                        arrayPush.push(osm041);
+                    }
+                    if (element == 'Belisario Domínguez') {
+                        var osm042= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9318017221814,19.5283775345597])), name: 'Belisario Domínguez',});
+                        arrayPush.push(osm042);
+                    }
+                    if (element == 'Bella Vista') {
+                        var osm043= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9096779404628,19.5163436614032])), name: 'Bella Vista',});
+                        arrayPush.push(osm043);
+                    }
+                    if (element == 'Benito Juárez') {
+                        var osm044= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9387136123577,19.5218296667259])), name: 'Benito Juárez',});
+                        arrayPush.push(osm044);
+                    }
+                    if (element == 'Brisas del Río Sede') {
+                        var osm045= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9371792296212,19.5755388958325])), name: 'Brisas del Río Sede',});
+                        arrayPush.push(osm045);
+                    }
+                    if (element == 'Buena Vista') {
+                        var osm046= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9279464548367,19.5166247717091])), name: 'Buena Vista',});
+                        arrayPush.push(osm046);
+                    }
+                    if (element == 'Buena Vista I') {
+                        var osm047= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9266027215016,19.5138877777505])), name: 'Buena Vista I',});
+                        arrayPush.push(osm047);
+                    }
+                    if (element == 'Buena Vista II') {
+                        var osm048= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9278283806665,19.5101815135075])), name: 'Buena Vista II',});
+                        arrayPush.push(osm048);
+                    }
+                    if (element == 'Bugambilias de Xalapa') {
+                        var osm049= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8998554436416,19.5551883604731])), name: 'Bugambilias de Xalapa',});
+                        arrayPush.push(osm049);
+                    }
+                    if (element == 'Burócrata Federal') {
+                        var osm050= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9170780092707,19.5471835828367])), name: 'Burócrata Federal',});
+                        arrayPush.push(osm050);
+                    }
+                    if (element == 'Caminos') {
+                        var osm051= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9149156764065,19.5174728875789])), name: 'Caminos',});
+                        arrayPush.push(osm051);
+                    }
+                    if (element == 'Campestre') {
+                        var osm052= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.899486026097,19.5044774333176])), name: 'Campestre',});
+                        arrayPush.push(osm052);
+                    }
+                    if (element == 'Campo de Tiro') {
+                        var osm053= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9021181802774,19.5667776440634])), name: 'Campo de Tiro',});
+                        arrayPush.push(osm053);
+                    }
+                    if (element == 'Campo Nuevo') {
+                        var osm054= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8900636428683,19.5136429760145])), name: 'Campo Nuevo',});
+                        arrayPush.push(osm054);
+                    }
+                    if (element == 'Cañada las Animas') {
+                        var osm055= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8749153593347,19.5230750017767])), name: 'Cañada las Animas',});
+                        arrayPush.push(osm055);
+                    }
+                    if (element == 'Carolino Anaya') {
+                        var osm056= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9071845243309,19.5611454834148])), name: 'Carolino Anaya',});
+                        arrayPush.push(osm056);
+                    }
+                    if (element == 'Casa Blanca') {
+                        var osm057= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8941081583572,19.5476084147129])), name: 'Casa Blanca',});
+                        arrayPush.push(osm057);
+                    }
+                    if (element == 'Cerro Colorado') {
+                        var osm058= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9425841353835,19.540043186586])), name: 'Cerro Colorado',});
+                        arrayPush.push(osm058);
+                    }
+                    if (element == 'Chulavista') {
+                        var osm059= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9365667023346,19.5301799292474])), name: 'Chulavista',});
+                        arrayPush.push(osm059);
+                    }
+                    if (element == 'Cincuentenario Casa Blanca') {
+                        var osm060= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8898809957984,19.5518301995069])), name: 'Cincuentenario Casa Blanca',});
+                        arrayPush.push(osm060);
+                    }
+                    if (element == 'Coapexpan') {
+                        var osm061= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9476336959401,19.5235801917457])), name: 'Coapexpan',});
+                        arrayPush.push(osm061);
+                    }
+                    if (element == 'Colibris') {
+                        var osm062= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8945206863588,19.5251307797842])), name: 'Colibris',});
+                        arrayPush.push(osm062);
+                    }
+                    if (element == 'Comercio') {
+                        var osm063= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9530624819765,19.5590655340448])), name: 'Comercio',});
+                        arrayPush.push(osm063);
+                    }
+                    if (element == 'Constitución del Sumidero') {
+                        var osm064= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8962946660264,19.5590615286465])), name: 'Constitución del Sumidero',});
+                        arrayPush.push(osm064);
+                    }
+                    if (element == 'Constituyentes') {
+                        var osm065= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.898324380162,19.5365093767856])), name: 'Constituyentes',});
+                        arrayPush.push(osm065);
+                    }
+                    if (element == 'Continental') {
+                        var osm066= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9012596352258,19.5569837297728])), name: 'Continental',});
+                        arrayPush.push(osm066);
+                    }
+                    if (element == 'Cuauhtémoc') {
+                        var osm067= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9081442874802,19.5206275676012])), name: 'Cuauhtémoc',});
+                        arrayPush.push(osm067);
+                    }
+                    if (element == 'Culturas Mexicanas') {
+                        var osm068= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9056789466665,19.5662717532126])), name: 'Culturas Mexicanas',});
+                        arrayPush.push(osm068);
+                    }
+                    if (element == 'Dante Delgado Ranauro') {
+                        var osm069= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9456549352746,19.5402073141819])), name: 'Dante Delgado Ranauro',});
+                        arrayPush.push(osm069);
+                    }
+                    if (element == 'Del Bosque') {
+                        var osm070= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9310288311741,19.5625513530051])), name: 'Del Bosque',});
+                        arrayPush.push(osm070);
+                    }
+                    if (element == 'Del Bosque Ferrocarrilero') {
+                        var osm071= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9087024563583,19.5562997635123])), name: 'Del Bosque Ferrocarrilero',});
+                        arrayPush.push(osm071);
+                    }
+                    if (element == 'Del Maestro') {
+                        var osm072= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9242324581951,19.5410799671607])), name: 'Del Maestro',});
+                        arrayPush.push(osm072);
+                    }
+                    if (element == 'Del Moral') {
+                        var osm073= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9100345966237,19.5722905143762])), name: 'Del Moral',});
+                        arrayPush.push(osm073);
+                    }
+                    if (element == 'Del Periodista') {
+                        var osm074= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9263552452633,19.5782401792962])), name: 'Del Periodista',});
+                        arrayPush.push(osm074);
+                    }
+                    if (element == 'Del Valle') {
+                        var osm075= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9079323402944,19.519614654788])), name: 'Del Valle',});
+                        arrayPush.push(osm075);
+                    }
+                    if (element == 'Desarrollo Social San Bruno') {
+                        var osm076= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.948320496095,19.5484318421675])), name: 'Desarrollo Social San Bruno',});
+                        arrayPush.push(osm076);
+                    }
+                    if (element == 'Diamante') {
+                        var osm077= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9462264492746,19.5646668633206])), name: 'Diamante',});
+                        arrayPush.push(osm077);
+                    }
+                    if (element == 'Dolores Hidalgo') {
+                        var osm078= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9474222162195,19.5632483486352])), name: 'Dolores Hidalgo',});
+                        arrayPush.push(osm078);
+                    }
+                    if (element == 'Dos de Abril') {
+                        var osm079= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9105322065367,19.5322633076197])), name: 'Dos de Abril',});
+                        arrayPush.push(osm079);
+                    }
+                    if (element == 'El Arroyo') {
+                        var osm080= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8953867826611,19.5524115226396])), name: 'El Arroyo',});
+                        arrayPush.push(osm080);
+                    }
+                    if (element == 'El Cafetal') {
+                        var osm081= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.901969285356,19.5470707391418])), name: 'El Cafetal',});
+                        arrayPush.push(osm081);
+                    }
+                    if (element == 'El Cafetal') {
+                        var osm082= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8905136499231,19.5534924511434])), name: 'El Cafetal',});
+                        arrayPush.push(osm082);
+                    }
+                    if (element == 'El Coyol') {
+                        var osm083= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.900304835895,19.5539612850787])), name: 'El Coyol',});
+                        arrayPush.push(osm083);
+                    }
+                    if (element == 'Electricistas') {
+                        var osm084= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9132836130727,19.521598840911])), name: 'Electricistas',});
+                        arrayPush.push(osm084);
+                    }
+                    if (element == 'El Haya') {
+                        var osm085= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.941153537739,19.5203460932981])), name: 'El Haya',});
+                        arrayPush.push(osm085);
+                    }
+                    if (element == 'El Haya') {
+                        var osm086= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9448805637276,19.5166624723047])), name: 'El Haya',});
+                        arrayPush.push(osm086);
+                    }
+                    if (element == 'El Mirador') {
+                        var osm087= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9110521812039,19.540691545858])), name: 'El Mirador',});
+                        arrayPush.push(osm087);
+                    }
+                    if (element == 'El Nacimiento') {
+                        var osm088= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.886646886973,19.5557650443566])), name: 'El Nacimiento',});
+                        arrayPush.push(osm088);
+                    }
+                    if (element == 'El Naranjal de Agua Santa') {
+                        var osm089= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9177275720476,19.5767146590982])), name: 'El Naranjal de Agua Santa',});
+                        arrayPush.push(osm089);
+                    }
+                    if (element == 'El Olmo') {
+                        var osm090= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8642243775766,19.5103365952334])), name: 'El Olmo',});
+                        arrayPush.push(osm090);
+                    }
+                    if (element == 'El Pocito') {
+                        var osm091= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9368816482185,19.5538712931012])), name: 'El Pocito',});
+                        arrayPush.push(osm091);
+                    }
+                    if (element == 'El Porvenir') {
+                        var osm092= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9379728655864,19.5645246636739])), name: 'El Porvenir',});
+                        arrayPush.push(osm092);
+                    }
+                    if (element == 'El Sumidero') {
+                        var osm093= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8976091521391,19.5527551140632])), name: 'El Sumidero',});
+                        arrayPush.push(osm093);
+                    }
+                    if (element == 'El Tanque') {
+                        var osm094= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8935579864983,19.5563226598071])), name: 'El Tanque',});
+                        arrayPush.push(osm094);
+                    }
+                    if (element == 'El Tucán') {
+                        var osm095= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9400897730042,19.5185818319058])), name: 'El Tucán',});
+                        arrayPush.push(osm095);
+                    }
+                    if (element == 'Emiliano Zapata') {
+                        var osm096= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9215196588144,19.5109268249362])), name: 'Emiliano Zapata',});
+                        arrayPush.push(osm096);
+                    }
+                    if (element == 'Emiliano Zapata') {
+                        var osm097= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9266337239287,19.5058003679592])), name: 'Emiliano Zapata',});
+                        arrayPush.push(osm097);
+                    }
+                    if (element == 'Empleados Municipales') {
+                        var osm098= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9382669676687,19.5475182906288])), name: 'Empleados Municipales',});
+                        arrayPush.push(osm098);
+                    }
+                    if (element == 'Encanto del Sumidero') {
+                        var osm099= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8980722092815,19.5589709057796])), name: 'Encanto del Sumidero',});
+                        arrayPush.push(osm099);
+                    }
+                    if (element == 'Encinal') {
+                        var osm100= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9072948952119,19.5340930405554])), name: 'Encinal',});
+                        arrayPush.push(osm100);
+                    }
+                    if (element == 'Encinos') {
+                        var osm101= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8922694179672,19.557614489026])), name: 'Encinos',});
+                        arrayPush.push(osm101);
+                    }
+                    if (element == 'Ensueño') {
+                        var osm102= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9123794563061,19.525667642947])), name: 'Ensueño',});
+                        arrayPush.push(osm102);
+                    }
+                    if (element == 'Estibadores') {
+                        var osm103= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9379163802146,19.5299978282534])), name: 'Estibadores',});
+                        arrayPush.push(osm103);
+                    }
+                    if (element == 'Federal') {
+                        var osm104= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9154699719489,19.5468753778519])), name: 'Federal',});
+                        arrayPush.push(osm104);
+                    }
+                    if (element == 'Felipe Carrillo Puerto') {
+                        var osm105= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9236939581163,19.5205255105746])), name: 'Felipe Carrillo Puerto',});
+                        arrayPush.push(osm105);
+                    }
+                    if (element == 'Ferrocarrilera') {
+                        var osm106= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9143974340352,19.5540438473004])), name: 'Ferrocarrilera',});
+                        arrayPush.push(osm106);
+                    }
+                    if (element == 'Flores de Casa Blanca') {
+                        var osm107= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8906711799473,19.5429226917032])), name: 'Flores de Casa Blanca',});
+                        arrayPush.push(osm107);
+                    }
+                    if (element == 'Floresta') {
+                        var osm108= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9035013014835,19.5593429112731])), name: 'Floresta',});
+                        arrayPush.push(osm108);
+                    }
+                    if (element == 'FOVISSSTE') {
+                        var osm109= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9403627297602,19.5485446269421])), name: 'FOVISSSTE',});
+                        arrayPush.push(osm109);
+                    }
+                    if (element == 'Framboyanes') {
+                        var osm110= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9371425583434,19.5616925238963])), name: 'Framboyanes',});
+                        arrayPush.push(osm110);
+                    }
+                    if (element == 'Francisco Ferrer Guardia') {
+                        var osm111= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9376771007768,19.5398612986672])), name: 'Francisco Ferrer Guardia',});
+                        arrayPush.push(osm111);
+                    }
+                    if (element == 'francisco I. MADERO') {
+                        var osm112= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9317412685565,19.5214417033797])), name: 'francisco I. MADERO',});
+                        arrayPush.push(osm112);
+                    }
+                    if (element == 'Francisco Villa') {
+                        var osm113= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9063093498915,19.5398997372086])), name: 'Francisco Villa',});
+                        arrayPush.push(osm113);
+                    }
+                    if (element == 'Fuentes de Las Animas') {
+                        var osm114= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8883365967315,19.5285148971513])), name: 'Fuentes de Las Animas',});
+                        arrayPush.push(osm114);
+                    }
+                    if (element == 'Guadalupe Rodríguez') {
+                        var osm115= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9334539237976,19.5300997804557])), name: 'Guadalupe Rodríguez',});
+                        arrayPush.push(osm115);
+                    }
+                    if (element == 'Guadalupe Victoria') {
+                        var osm116= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9566537115993,19.5520405246039])), name: 'Guadalupe Victoria',});
+                        arrayPush.push(osm116);
+                    }
+                    if (element == 'Heberto Castillo Martínez') {
+                        var osm117= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9013837254726,19.573249051633])), name: 'Heberto Castillo Martínez',});
+                        arrayPush.push(osm117);
+                    }
+                    if (element == 'Héroes Ferrocarrileros') {
+                        var osm118= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9116396498982,19.5582971767151])), name: 'Héroes Ferrocarrileros',});
+                        arrayPush.push(osm118);
+                    }
+                    if (element == 'Herón Proal') {
+                        var osm119= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.899873939309,19.5436211643447])), name: 'Herón Proal',});
+                        arrayPush.push(osm119);
+                    }
+                    if (element == 'Higueras') {
+                        var osm120= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8866355933116,19.5496402103477])), name: 'Higueras',});
+                        arrayPush.push(osm120);
+                    }
+                    if (element == 'Hogares Ferrocarrileros') {
+                        var osm121= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9078055254188,19.5490045074323])), name: 'Hogares Ferrocarrileros',});
+                        arrayPush.push(osm121);
+                    }
+                    if (element == 'Huizachal') {
+                        var osm122= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8894128451772,19.5527444448307])), name: 'Huizachal',});
+                        arrayPush.push(osm122);
+                    }
+                    if (element == 'Indeco Animas') {
+                        var osm123= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8910796615515,19.5326827615326])), name: 'Indeco Animas',});
+                        arrayPush.push(osm123);
+                    }
+                    if (element == 'Independencia') {
+                        var osm124= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9511094147057,19.5651388467083])), name: 'Independencia',});
+                        arrayPush.push(osm124);
+                    }
+                    if (element == 'Independencia') {
+                        var osm125= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9085161171375,19.5443380553426])), name: 'Independencia',});
+                        arrayPush.push(osm125);
+                    }
+                    if (element == 'INFONAVIT Loma Alta') {
+                        var osm126= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9156884288279,19.5412377244094])), name: 'INFONAVIT Loma Alta',});
+                        arrayPush.push(osm126);
+                    }
+                    if (element == 'INFONAVIT Pomona') {
+                        var osm127= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9058460612655,19.5293663249673])), name: 'INFONAVIT Pomona',});
+                        arrayPush.push(osm127);
+                    }
+                    if (element == 'Ingeniero Rivadeneyra') {
+                        var osm128= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9037787596888,19.5281024936584])), name: 'Ingeniero Rivadeneyra',});
+                        arrayPush.push(osm128);
+                    }
+                    if (element == 'INMECAFE') {
+                        var osm129= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8963136823599,19.5290521728322])), name: 'INMECAFE',});
+                        arrayPush.push(osm129);
+                    }
+                    if (element == 'Insurgentes') {
+                        var osm130= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9425118978686,19.5700298341864])), name: 'Insurgentes',});
+                        arrayPush.push(osm130);
+                    }
+                    if (element == 'Internacional') {
+                        var osm131= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9011440760427,19.5675863238768])), name: 'Internacional',});
+                        arrayPush.push(osm131);
+                    }
+                    if (element == 'Isauro Acosta') {
+                        var osm132= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9357057028929,19.5545767504597])), name: 'Isauro Acosta',});
+                        arrayPush.push(osm132);
+                    }
+                    if (element == 'Isleta') {
+                        var osm133= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9205597246209,19.5153292169388])), name: 'Isleta',});
+                        arrayPush.push(osm133);
+                    }
+                    if (element == 'Jacarandas') {
+                        var osm134= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8888798722906,19.555804149663])), name: 'Jacarandas',});
+                        arrayPush.push(osm134);
+                    }
+                    if (element == 'Jardines de Augusto') {
+                        var osm135= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8942082666274,19.5359734831499])), name: 'Jardines de Augusto',});
+                        arrayPush.push(osm135);
+                    }
+                    if (element == 'Jardines de Bambú') {
+                        var osm136= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8954202937822,19.5333373456494])), name: 'Jardines de Bambú',});
+                        arrayPush.push(osm136);
+                    }
+                    if (element == 'Jardines de la Pradera') {
+                        var osm137= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8945939482065,19.5082891251156])), name: 'Jardines de la Pradera',});
+                        arrayPush.push(osm137);
+                    }
+                    if (element == 'Jardines de Las Animas') {
+                        var osm138= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8825500442413,19.5254579798188])), name: 'Jardines de Las Animas',});
+                        arrayPush.push(osm138);
+                    }
+                    if (element == 'Jardines de Las Flores 2000') {
+                        var osm139= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.897320289452,19.534174497666])), name: 'Jardines de Las Flores 2000',});
+                        arrayPush.push(osm139);
+                    }
+                    if (element == 'Jardines del Castillo') {
+                        var osm140= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8955942005722,19.5549989701302])), name: 'Jardines del Castillo',});
+                        arrayPush.push(osm140);
+                    }
+                    if (element == 'Jardines de Santa Rosa') {
+                        var osm141= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8979728324423,19.5014148305452])), name: 'Jardines de Santa Rosa',});
+                        arrayPush.push(osm141);
+                    }
+                    if (element == 'Jardines de Xalapa') {
+                        var osm142= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9062463148223,19.5447214229524])), name: 'Jardines de Xalapa',});
+                        arrayPush.push(osm142);
+                    }
+                    if (element == 'J. J. Panes') {
+                        var osm143= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9397292298265,19.5314604180786])), name: 'J. J. Panes',});
+                        arrayPush.push(osm143);
+                    }
+                    if (element == 'José Cardel') {
+                        var osm144= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9179413102372,19.5393084179041])), name: 'José Cardel',});
+                        arrayPush.push(osm144);
+                    }
+                    if (element == 'Josefa Ortiz de Domínguez') {
+                        var osm145= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.944873040309,19.5370706631588])), name: 'Josefa Ortiz de Domínguez',});
+                        arrayPush.push(osm145);
+                    }
+                    if (element == 'José Vasconcelos') {
+                        var osm146= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9095880657509,19.568868930683])), name: 'José Vasconcelos',});
+                        arrayPush.push(osm146);
+                    }
+                    if (element == 'Juan de la Luz Enríquez') {
+                        var osm147= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9142041877116,19.5440728478939])), name: 'Juan de la Luz Enríquez',});
+                        arrayPush.push(osm147);
+                    }
+                    if (element == 'Laderas del Macuiltepetl') {
+                        var osm148= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9180596930904,19.5433503667159])), name: 'Laderas del Macuiltepetl',});
+                        arrayPush.push(osm148);
+                    }
+                    if (element == 'La Lagunilla') {
+                        var osm149= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9266912319953,19.567193667609])), name: 'La Lagunilla',});
+                        arrayPush.push(osm149);
+                    }
+                    if (element == 'La Loma') {
+                        var osm150= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8957159139943,19.5108038962047])), name: 'La Loma',});
+                        arrayPush.push(osm150);
+                    }
+                    if (element == 'La Morera') {
+                        var osm151= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9266337239287,19.5058003679592])), name: 'La Morera',});
+                        arrayPush.push(osm151);
+                    }
+                    if (element == 'La Pedreguera') {
+                        var osm152= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9450610481491,19.5495384543486])), name: 'La Pedreguera',});
+                        arrayPush.push(osm152);
+                    }
+                    if (element == 'La Piedad') {
+                        var osm153= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9078719902664,19.5303493594783])), name: 'La Piedad',});
+                        arrayPush.push(osm153);
+                    }
+                    if (element == 'Las Águilas') {
+                        var osm154= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9024576423407,19.5587317011837])), name: 'Las Águilas',});
+                        arrayPush.push(osm154);
+                    }
+                    if (element == 'Las Águilas II') {
+                        var osm155= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8996720427824,19.5584610036738])), name: 'Las Águilas II',});
+                        arrayPush.push(osm155);
+                    }
+                    if (element == 'Las Arboledas') {
+                        var osm156= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9038392819671,19.5293931258857])), name: 'Las Arboledas',});
+                        arrayPush.push(osm156);
+                    }
+                    if (element == 'Las Brisas') {
+                        var osm157= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9007141071344,19.5592881610335])), name: 'Las Brisas',});
+                        arrayPush.push(osm157);
+                    }
+                    if (element == 'Las Flores') {
+                        var osm158= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9427962077478,19.5429562645351])), name: 'Las Flores',});
+                        arrayPush.push(osm158);
+                    }
+                    if (element == 'Las Flores') {
+                        var osm159= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8857541835196,19.5333072828911])), name: 'Las Flores',});
+                        arrayPush.push(osm159);
+                    }
+                    if (element == 'Las Jacarandas') {
+                        var osm160= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9019618549611,19.551398244828])), name: 'Las Jacarandas',});
+                        arrayPush.push(osm160);
+                    }
+                    if (element == 'Las Margaritas') {
+                        var osm161= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8995639356168,19.5067457510674])), name: 'Las Margaritas',});
+                        arrayPush.push(osm161);
+                    }
+                    if (element == 'Las Minas') {
+                        var osm162= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8971681257437,19.556772890444])), name: 'Las Minas',});
+                        arrayPush.push(osm162);
+                    }
+                    if (element == 'Las Torres') {
+                        var osm163= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8875927666512,19.5581008055672])), name: 'Las Torres',});
+                        arrayPush.push(osm163);
+                    }
+                    if (element == 'Lázaro Cárdenas') {
+                        var osm164= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9022768786106,19.5379607318966])), name: 'Lázaro Cárdenas',});
+                        arrayPush.push(osm164);
+                    }
+                    if (element == 'Lealtad Institucional') {
+                        var osm165= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8833381757128,19.5519278844781])), name: 'Lealtad Institucional',});
+                        arrayPush.push(osm165);
+                    }
+                    if (element == 'Libertad') {
+                        var osm166= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9345716312601,19.5181326403777])), name: 'Libertad',});
+                        arrayPush.push(osm166);
+                    }
+                    if (element == 'Loma Alta') {
+                        var osm167= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8943444566282,19.5307624902789])), name: 'Loma Alta',});
+                        arrayPush.push(osm167);
+                    }
+                    if (element == 'Lomas de Casa Blanca Sector Higueras') {
+                        var osm168= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8865419322045,19.5453794024295])), name: 'Lomas de Casa Blanca Sector Higueras',});
+                        arrayPush.push(osm168);
+                    }
+                    if (element == 'Lomas de Chapultepec') {
+                        var osm169= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9542603479054,19.5564109281438])), name: 'Lomas de Chapultepec',});
+                        arrayPush.push(osm169);
+                    }
+                    if (element == 'Lomas del Estadio') {
+                        var osm170= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9175665048534,19.5202126924364])), name: 'Lomas del Estadio',});
+                        arrayPush.push(osm170);
+                    }
+                    if (element == 'Lomas del Paraíso') {
+                        var osm171= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9030065201171,19.5023074521132])), name: 'Lomas del Paraíso',});
+                        arrayPush.push(osm171);
+                    }
+                    if (element == 'Lomas del Paraíso') {
+                        var osm172= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9086612674207,19.51148468532])), name: 'Lomas del Paraíso',});
+                        arrayPush.push(osm172);
+                    }
+                    if (element == 'Lomas del Sedeño') {
+                        var osm173= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9153917306961,19.5773860207764])), name: 'Lomas del Sedeño',});
+                        arrayPush.push(osm173);
+                    }
+                    if (element == 'Lomas del Seminario') {
+                        var osm174= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9431578468953,19.5548297684992])), name: 'Lomas del Seminario',});
+                        arrayPush.push(osm174);
+                    }
+                    if (element == 'Lomas del Sumidero') {
+                        var osm175= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8914704335307,19.5560175624992])), name: 'Lomas del Sumidero',});
+                        arrayPush.push(osm175);
+                    }
+                    if (element == 'Lomas del Tejar') {
+                        var osm176= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.902804300273,19.5201873380294])), name: 'Lomas del Tejar',});
+                        arrayPush.push(osm176);
+                    }
+                    if (element == 'Lomas de Oro') {
+                        var osm177= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8808163392941,19.519676694966])), name: 'Lomas de Oro',});
+                        arrayPush.push(osm177);
+                    }
+                    if (element == 'Lomas de San Roque') {
+                        var osm178= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9379105483882,19.5546315931671])), name: 'Lomas de San Roque',});
+                        arrayPush.push(osm178);
+                    }
+                    if (element == 'Lomas las Margaritas') {
+                        var osm179= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.896940436456,19.4985372327803])), name: 'Lomas las Margaritas',});
+                        arrayPush.push(osm179);
+                    }
+                    if (element == 'Lomas Verdes') {
+                        var osm180= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8958923814889,19.5070611819485])), name: 'Lomas Verdes',});
+                        arrayPush.push(osm180);
+                    }
+                    if (element == 'Lomas Verdes') {
+                        var osm181= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8953010312409,19.4996959862208])), name: 'Lomas Verdes',});
+                        arrayPush.push(osm181);
+                    }
+                    if (element == 'Los Ángeles') {
+                        var osm182= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9100801482939,19.5264192325398])), name: 'Los Ángeles',});
+                        arrayPush.push(osm182);
+                    }
+                    if (element == 'Los Encinos') {
+                        var osm183= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9494644990797,19.554106659241])), name: 'Los Encinos',});
+                        arrayPush.push(osm183);
+                    }
+                    if (element == 'Los Lagos') {
+                        var osm184= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9215214636851,19.5164224958079])), name: 'Los Lagos',});
+                        arrayPush.push(osm184);
+                    }
+                    if (element == 'Los Laureles') {
+                        var osm185= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9108602563742,19.5362846670117])), name: 'Los Laureles',});
+                        arrayPush.push(osm185);
+                    }
+                    if (element == 'Los Pinos') {
+                        var osm186= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9417493371272,19.5442038687384])), name: 'Los Pinos',});
+                        arrayPush.push(osm186);
+                    }
+                    if (element == 'Los Pinos') {
+                        var osm187= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.911463652494,19.5122403433865])), name: 'Los Pinos',});
+                        arrayPush.push(osm187);
+                    }
+                    if (element == 'Los Prados') {
+                        var osm188= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9087067574728,19.5659856410124])), name: 'Los Prados',});
+                        arrayPush.push(osm188);
+                    }
+                    if (element == 'Los Reyes') {
+                        var osm189= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8951648987389,19.5363116022708])), name: 'Los Reyes',});
+                        arrayPush.push(osm189);
+                    }
+                    if (element == 'Los Sauces') {
+                        var osm190= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9319579419918,19.5266420418847])), name: 'Los Sauces',});
+                        arrayPush.push(osm190);
+                    }
+                    if (element == 'Lucas Martín') {
+                        var osm191= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9221745643523,19.5764579207906])), name: 'Lucas Martín',});
+                        arrayPush.push(osm191);
+                    }
+                    if (element == 'Luis Donaldo Colosio') {
+                        var osm192= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9494794331965,19.5694148376879])), name: 'Luis Donaldo Colosio',});
+                        arrayPush.push(osm192);
+                    }
+                    if (element == 'Luz del Barrio') {
+                        var osm193= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9526710441502,19.5509250343641])), name: 'Luz del Barrio',});
+                        arrayPush.push(osm193);
+                    }
+                    if (element == 'Manantiales') {
+                        var osm194= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9433614158156,19.5652578233716])), name: 'Manantiales',});
+                        arrayPush.push(osm194);
+                    }
+                    if (element == 'Manantiales') {
+                        var osm195= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9402420916662,19.5641216687915])), name: 'Manantiales',});
+                        arrayPush.push(osm195);
+                    }
+                    if (element == 'Marco Antonio Muñoz') {
+                        var osm196= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.913833774766,19.5236050220762])), name: 'Marco Antonio Muñoz',});
+                        arrayPush.push(osm196);
+                    }
+                    if (element == 'Marco Antonio Muñoz') {
+                        var osm197= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9424259322423,19.5207670313134])), name: 'Marco Antonio Muñoz',});
+                        arrayPush.push(osm197);
+                    }
+                    if (element == 'Margarita Maza de Juárez') {
+                        var osm198= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9054082402724,19.55431340929])), name: 'Margarita Maza de Juárez',});
+                        arrayPush.push(osm198);
+                    }
+                    if (element == 'Margarita Maza de Juárez') {
+                        var osm199= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9037488203878,19.5564516760917])), name: 'Margarita Maza de Juárez',});
+                        arrayPush.push(osm199);
+                    }
+                    if (element == 'María Esther') {
+                        var osm200= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9151938715372,19.53435940991])), name: 'María Esther',});
+                        arrayPush.push(osm200);
+                    }
+                    if (element == 'Mártires de Chicago') {
+                        var osm201= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9080101887048,19.5087433792068])), name: 'Mártires de Chicago',});
+                        arrayPush.push(osm201);
+                    }
+                    if (element == 'Mártires de Chicago') {
+                        var osm202= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9086612674207,19.51148468532])), name: 'Mártires de Chicago',});
+                        arrayPush.push(osm202);
+                    }
+                    if (element == 'Mártires de Chicago') {
+                        var osm203= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.911463652494,19.5122403433865])), name: 'Mártires de Chicago',});
+                        arrayPush.push(osm203);
+                    }
+                    if (element == 'MAVER') {
+                        var osm204= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8995137657961,19.5647084610757])), name: 'MAVER',});
+                        arrayPush.push(osm204);
+                    }
+                    if (element == 'Mesa del Guayabo') {
+                        var osm205= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9352697291124,19.5690787638021])), name: 'Mesa del Guayabo',});
+                        arrayPush.push(osm205);
+                    }
+                    if (element == 'México') {
+                        var osm206= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9138389028857,19.5748151600172])), name: 'México',});
+                        arrayPush.push(osm206);
+                    }
+                    if (element == 'Miguel Alemán Valdez') {
+                        var osm207= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8940481429854,19.5337292593661])), name: 'Miguel Alemán Valdez',});
+                        arrayPush.push(osm207);
+                    }
+                    if (element == 'Miguel Hidalgo y Costilla') {
+                        var osm208= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9129456658942,19.5472602020716])), name: 'Miguel Hidalgo y Costilla',});
+                        arrayPush.push(osm208);
+                    }
+                    if (element == 'Miradores de las Flores') {
+                        var osm209= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8966246146401,19.5600154579824])), name: 'Miradores de las Flores',});
+                        arrayPush.push(osm209);
+                    }
+                    if (element == 'Miradores del Sumidero') {
+                        var osm210= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8997554159515,19.5572966331153])), name: 'Miradores del Sumidero',});
+                        arrayPush.push(osm210);
+                    }
+                    if (element == 'Miradores de San Roque') {
+                        var osm211= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9499926706751,19.5678886903554])), name: 'Miradores de San Roque',});
+                        arrayPush.push(osm211);
+                    }
+                    if (element == 'Miradores de Santa Rosa') {
+                        var osm212= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8941971807278,19.5013469676732])), name: 'Miradores de Santa Rosa',});
+                        arrayPush.push(osm212);
+                    }
+                    if (element == 'Misión San Carlos') {
+                        var osm213= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9123754453538,19.5391146706465])), name: 'Misión San Carlos',});
+                        arrayPush.push(osm213);
+                    }
+                    if (element == 'Modelo') {
+                        var osm214= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9096668414559,19.52816658598])), name: 'Modelo',});
+                        arrayPush.push(osm214);
+                    }
+                    if (element == 'Monte Video') {
+                        var osm215= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9464608564766,19.5465479606983])), name: 'Monte Video',});
+                        arrayPush.push(osm215);
+                    }
+                    if (element == 'Morelos') {
+                        var osm216= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9036440566041,19.5511314166466])), name: 'Morelos',});
+                        arrayPush.push(osm216);
+                    }
+                    if (element == 'Morelos') {
+                        var osm217= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9034712419552,19.5533981737006])), name: 'Morelos',});
+                        arrayPush.push(osm217);
+                    }
+                    if (element == 'Nacional') {
+                        var osm218= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9017266268233,19.5621561672757])), name: 'Nacional',});
+                        arrayPush.push(osm218);
+                    }
+                    if (element == 'Nahuiollin') {
+                        var osm219= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.938328591422,19.5659180172327])), name: 'Nahuiollin',});
+                        arrayPush.push(osm219);
+                    }
+                    if (element == 'Ni0os Héroes') {
+                        var osm220= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9370242845894,19.5597285041423])), name: 'Ni0os Héroes',});
+                        arrayPush.push(osm220);
+                    }
+                    if (element == 'Nueva Xalapa') {
+                        var osm221= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9011069996023,19.5168248998393])), name: 'Nueva Xalapa',});
+                        arrayPush.push(osm221);
+                    }
+                    if (element == 'Nuevo Sol') {
+                        var osm222= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8962295608231,19.5623156771913])), name: 'Nuevo Sol',});
+                        arrayPush.push(osm222);
+                    }
+                    if (element == 'Nuevo Xalapa') {
+                        var osm223= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8987407233217,19.5094961874311])), name: 'Nuevo Xalapa',});
+                        arrayPush.push(osm223);
+                    }
+                    if (element == 'Obrero Campesina') {
+                        var osm224= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9333161174055,19.5452843592654])), name: 'Obrero Campesina',});
+                        arrayPush.push(osm224);
+                    }
+                    if (element == 'Obrero Mundial') {
+                        var osm225= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9036226572239,19.5663171903462])), name: 'Obrero Mundial',});
+                        arrayPush.push(osm225);
+                    }
+                    if (element == 'Obreros Textiles') {
+                        var osm226= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9151599849698,19.520703258013])), name: 'Obreros Textiles',});
+                        arrayPush.push(osm226);
+                    }
+                    if (element == 'Olmos de Las Animas') {
+                        var osm227= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8719737031165,19.5147156763774])), name: 'Olmos de Las Animas',});
+                        arrayPush.push(osm227);
+                    }
+                    if (element == 'Pastoresa') {
+                        var osm228= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8819451483051,19.5149383590283])), name: 'Pastoresa',});
+                        arrayPush.push(osm228);
+                    }
+                    if (element == 'Pedregal de Las Animas') {
+                        var osm229= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8813184189917,19.53186184796])), name: 'Pedregal de Las Animas',});
+                        arrayPush.push(osm229);
+                    }
+                    if (element == 'Peñascal') {
+                        var osm230= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9022107282267,19.5420509535599])), name: 'Peñascal',});
+                        arrayPush.push(osm230);
+                    }
+                    if (element == 'Plan de Ayala') {
+                        var osm231= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.945938077732,19.5623118402432])), name: 'Plan de Ayala',});
+                        arrayPush.push(osm231);
+                    }
+                    if (element == 'Portón Colorado') {
+                        var osm232= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9036495770675,19.5690263083595])), name: 'Portón Colorado',});
+                        arrayPush.push(osm232);
+                    }
+                    if (element == 'Porvenir Dos') {
+                        var osm233= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9333621508212,19.565742038674])), name: 'Porvenir Dos',});
+                        arrayPush.push(osm233);
+                    }
+                    if (element == 'Predio de la Virgen') {
+                        var osm234= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9064102870742,19.5526716852165])), name: 'Predio de la Virgen',});
+                        arrayPush.push(osm234);
+                    }
+                    if (element == 'Predio de la Virgen') {
+                        var osm235= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9049584029148,19.5482152173311])), name: 'Predio de la Virgen',});
+                        arrayPush.push(osm235);
+                    }
+                    if (element == 'Predio Palo Blanco') {
+                        var osm236= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9046442034319,19.5572328122118])), name: 'Predio Palo Blanco',});
+                        arrayPush.push(osm236);
+                    }
+                    if (element == 'Presa de San Bruno') {
+                        var osm237= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9421797430388,19.5474245233621])), name: 'Presa de San Bruno',});
+                        arrayPush.push(osm237);
+                    }
+                    if (element == 'Presa de San Bruno') {
+                        var osm238= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9434308083122,19.5484907682761])), name: 'Presa de San Bruno',});
+                        arrayPush.push(osm238);
+                    }
+                    if (element == 'Progreso Macuiltepetl') {
+                        var osm239= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9220732376311,19.5506082221692])), name: 'Progreso Macuiltepetl',});
+                        arrayPush.push(osm239);
+                    }
+                    if (element == 'Prolongación El Diamante') {
+                        var osm240= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9444695835483,19.566242413292])), name: 'Prolongación El Diamante',});
+                        arrayPush.push(osm240);
+                    }
+                    if (element == 'PROVIPO') {
+                        var osm241= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.889710420541,19.5533088875461])), name: 'PROVIPO',});
+                        arrayPush.push(osm241);
+                    }
+                    if (element == 'Pumar') {
+                        var osm242= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9105467606815,19.5301717291575])), name: 'Pumar',});
+                        arrayPush.push(osm242);
+                    }
+                    if (element == 'Rafael Hernández Ochoa') {
+                        var osm243= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9341112622701,19.5609739259663])), name: 'Rafael Hernández Ochoa',});
+                        arrayPush.push(osm243);
+                    }
+                    if (element == 'Rafael Hernández Villalpando') {
+                        var osm244= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.897066440911,19.5703579249915])), name: 'Rafael Hernández Villalpando',});
+                        arrayPush.push(osm244);
+                    }
+                    if (element == 'Rafael Lucio') {
+                        var osm245= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9205038596725,19.5613082130017])), name: 'Rafael Lucio',});
+                        arrayPush.push(osm245);
+                    }
+                    if (element == 'Rafael Murillo Vidal') {
+                        var osm246= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9342912490297,19.5548342065475])), name: 'Rafael Murillo Vidal',});
+                        arrayPush.push(osm246);
+                    }
+                    if (element == 'Rafael Murillo Vidal') {
+                        var osm247= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.93352009116,19.5585501074669])), name: 'Rafael Murillo Vidal',});
+                        arrayPush.push(osm247);
+                    }
+                    if (element == 'Real del Bosque') {
+                        var osm248= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8715830661635,19.5180749702464])), name: 'Real del Bosque',});
+                        arrayPush.push(osm248);
+                    }
+                    if (element == 'Rebombeo de Las Animas') {
+                        var osm249= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8848326655519,19.5383628330672])), name: 'Rebombeo de Las Animas',});
+                        arrayPush.push(osm249);
+                    }
+                    if (element == 'Rebombeo de Las Animas') {
+                        var osm250= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8857772138573,19.5360040945893])), name: 'Rebombeo de Las Animas',});
+                        arrayPush.push(osm250);
+                    }
+                    if (element == 'Reforma') {
+                        var osm251= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9316253124949,19.5173292177599])), name: 'Reforma',});
+                        arrayPush.push(osm251);
+                    }
+                    if (element == 'Represa del Carmen') {
+                        var osm252= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9354127938786,19.5320286545011])), name: 'Represa del Carmen',});
+                        arrayPush.push(osm252);
+                    }
+                    if (element == 'Residencial Mirador') {
+                        var osm253= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9012155857789,19.5025963469731])), name: 'Residencial Mirador',});
+                        arrayPush.push(osm253);
+                    }
+                    if (element == 'Revolución') {
+                        var osm254= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9192077148399,19.5706321387499])), name: 'Revolución',});
+                        arrayPush.push(osm254);
+                    }
+                    if (element == 'Rotaria') {
+                        var osm255= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8899714075042,19.5545940914892])), name: 'Rotaria',});
+                        arrayPush.push(osm255);
+                    }
+                    if (element == 'Rubén Pabello Acosta') {
+                        var osm256= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9130217563958,19.5644977114656])), name: 'Rubén Pabello Acosta',});
+                        arrayPush.push(osm256);
+                    }
+                    if (element == 'Rubén R. Jaramillo') {
+                        var osm257= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9466519244213,19.559632998223])), name: 'Rubén R. Jaramillo',});
+                        arrayPush.push(osm257);
+                    }
+                    if (element == 'Rubí Animas') {
+                        var osm258= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.878808839706,19.5109710136662])), name: 'Rubí Animas',});
+                        arrayPush.push(osm258);
+                    }
+                    if (element == 'Rubí Animas') {
+                        var osm259= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.875150471318,19.5142468336916])), name: 'Rubí Animas',});
+                        arrayPush.push(osm259);
+                    }
+                    if (element == 'SAHOP') {
+                        var osm260= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8937607032216,19.5279678856366])), name: 'SAHOP',});
+                        arrayPush.push(osm260);
+                    }
+                    if (element == 'Salud') {
+                        var osm261= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9353171820956,19.5278110446582])), name: 'Salud',});
+                        arrayPush.push(osm261);
+                    }
+                    if (element == 'Salvador Díaz Mirón') {
+                        var osm262= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9041709221579,19.5408356175775])), name: 'Salvador Díaz Mirón',});
+                        arrayPush.push(osm262);
+                    }
+                    if (element == 'Santa Rosa') {
+                        var osm263= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8959248144311,19.5030512670914])), name: 'Santa Rosa',});
+                        arrayPush.push(osm263);
+                    }
+                    if (element == 'Sebastián Lerdo de Tejada') {
+                        var osm264= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9041191526929,19.5351765036141])), name: 'Sebastián Lerdo de Tejada',});
+                        arrayPush.push(osm264);
+                    }
+                    if (element == 'Segunda  Sección Jardines de Santa Rosa') {
+                        var osm265= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8996638569959,19.5028724273134])), name: 'Segunda  Sección Jardines de Santa Rosa',});
+                        arrayPush.push(osm265);
+                    }
+                    if (element == 'SIPEH Animas') {
+                        var osm266= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8935754154134,19.525734371317])), name: 'SIPEH Animas',});
+                        arrayPush.push(osm266);
+                    }
+                    if (element == 'SIPEH Animas') {
+                        var osm267= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8945206863588,19.5251307797842])), name: 'SIPEH Animas',});
+                        arrayPush.push(osm267);
+                    }
+                    if (element == 'Solidaridad') {
+                        var osm268= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9365783471693,19.5679551864062])), name: 'Solidaridad',});
+                        arrayPush.push(osm268);
+                    }
+                    if (element == 'Sostenes M. Blanco') {
+                        var osm269= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9154244164832,19.5648825456322])), name: 'Sostenes M. Blanco',});
+                        arrayPush.push(osm269);
+                    }
+                    if (element == 'Sumidero') {
+                        var osm270= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8996069382111,19.5495878777943])), name: 'Sumidero',});
+                        arrayPush.push(osm270);
+                    }
+                    if (element == 'Tabasco') {
+                        var osm271= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9101030841133,19.5627947418528])), name: 'Tabasco',});
+                        arrayPush.push(osm271);
+                    }
+                    if (element == 'Tamborrel') {
+                        var osm272= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9357463775971,19.534620381857])), name: 'Tamborrel',});
+                        arrayPush.push(osm272);
+                    }
+                    if (element == 'Tatahuicapan') {
+                        var osm273= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9068500330498,19.5239562928707])), name: 'Tatahuicapan',});
+                        arrayPush.push(osm273);
+                    }
+                    if (element == 'Tulipanes de la Animas') {
+                        var osm274= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8681797019235,19.5273772941482])), name: 'Tulipanes de la Animas',});
+                        arrayPush.push(osm274);
+                    }
+                    if (element == 'UCISVER') {
+                        var osm275= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9509765418717,19.5567934910198])), name: 'UCISVER',});
+                        arrayPush.push(osm275);
+                    }
+                    if (element == 'UDICV') {
+                        var osm276= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8840144423061,19.5506741115877])), name: 'UDICV',});
+                        arrayPush.push(osm276);
+                    }
+                    if (element == 'UNE-PRI') {
+                        var osm277= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9488560857029,19.557063401563])), name: 'UNE-PRI',});
+                        arrayPush.push(osm277);
+                    }
+                    if (element == 'Unidad Deportiva El Castillo') {
+                        var osm278= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8865957928828,19.5412621222571])), name: 'Unidad Deportiva El Castillo',});
+                        arrayPush.push(osm278);
+                    }
+                    if (element == 'Unidad Jardín') {
+                        var osm279= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.917104750376,19.5412773748641])), name: 'Unidad Jardín',});
+                        arrayPush.push(osm279);
+                    }
+                    if (element == 'Unidad Magisterial') {
+                        var osm280= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9318564850623,19.5528926731541])), name: 'Unidad Magisterial',});
+                        arrayPush.push(osm280);
+                    }
+                    if (element == 'Unidad y Trabajo') {
+                        var osm281= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9515920776763,19.5526769197212])), name: 'Unidad y Trabajo',});
+                        arrayPush.push(osm281);
+                    }
+                    if (element == 'Unión') {
+                        var osm282= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9021425079526,19.5546164413879])), name: 'Unión',});
+                        arrayPush.push(osm282);
+                    }
+                    if (element == 'Unión') {
+                        var osm283= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9041514519477,19.5534077183401])), name: 'Unión',});
+                        arrayPush.push(osm283);
+                    }
+                    if (element == 'Unión Ferrocarrilera') {
+                        var osm284= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9102804430142,19.5548587396874])), name: 'Unión Ferrocarrilera',});
+                        arrayPush.push(osm284);
+                    }
+                    if (element == 'Valle Anáhuac') {
+                        var osm285= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8777071719595,19.5213661417245])), name: 'Valle Anáhuac',});
+                        arrayPush.push(osm285);
+                    }
+                    if (element == 'Valle de Cristal') {
+                        var osm286= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9014283192429,19.5444952552178])), name: 'Valle de Cristal',});
+                        arrayPush.push(osm286);
+                    }
+                    if (element == 'Valle de los Pinos') {
+                        var osm287= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9158128005499,19.5752845046963])), name: 'Valle de los Pinos',});
+                        arrayPush.push(osm287);
+                    }
+                    if (element == 'Valle del Sol') {
+                        var osm288= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9471409853189,19.5427190222693])), name: 'Valle del Sol',});
+                        arrayPush.push(osm288);
+                    }
+                    if (element == 'Vanguardia Revolucionaria') {
+                        var osm289= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9017482360999,19.532067757906])), name: 'Vanguardia Revolucionaria',});
+                        arrayPush.push(osm289);
+                    }
+                    if (element == 'Venustiano Carranza') {
+                        var osm290= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9274675012348,19.5223158683556])), name: 'Venustiano Carranza',});
+                        arrayPush.push(osm290);
+                    }
+                    if (element == 'Veracruz') {
+                        var osm291= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9437534253259,19.5613580715124])), name: 'Veracruz',});
+                        arrayPush.push(osm291);
+                    }
+                    if (element == 'Veracruz') {
+                        var osm292= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9299270422797,19.5399522489672])), name: 'Veracruz',});
+                        arrayPush.push(osm292);
+                    }
+                    if (element == 'Veracruzana') {
+                        var osm293= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9320501561671,19.5336878677419])), name: 'Veracruzana',});
+                        arrayPush.push(osm293);
+                    }
+                    if (element == 'Vicente Guerrero') {
+                        var osm294= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8962295608231,19.5623156771913])), name: 'Vicente Guerrero',});
+                        arrayPush.push(osm294);
+                    }
+                    if (element == 'Vicente Guerrero') {
+                        var osm295= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8968103955023,19.5629338496359])), name: 'Vicente Guerrero',});
+                        arrayPush.push(osm295);
+                    }
+                    if (element == 'Victimas del 6 de Septiembre') {
+                        var osm296= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9396641459186,19.5658748425321])), name: 'Victimas del 6 de Septiembre',});
+                        arrayPush.push(osm296);
+                    }
+                    if (element == 'Villareal') {
+                        var osm297= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9456914890336,19.5346373817557])), name: 'Villareal',});
+                        arrayPush.push(osm297);
+                    }
+                    if (element == 'Virginia Cordero de Murillo Vidal') {
+                        var osm298= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9301218896642,19.559401475698])), name: 'Virginia Cordero de Murillo Vidal',});
+                        arrayPush.push(osm298);
+                    }
+                    if (element == 'Vista Hermosa') {
+                        var osm299= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8819081732292,19.5208061787498])), name: 'Vista Hermosa',});
+                        arrayPush.push(osm299);
+                    }
+                    if (element == 'Vista Hermosa') {
+                        var osm300= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8819081732292,19.5208061787498])), name: 'Vista Hermosa',});
+                        arrayPush.push(osm300);
+                    }
+                    if (element == 'Vista Hermosa') {
+                        var osm301= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.8828946423306,19.5208750883235])), name: 'Vista Hermosa',});
+                        arrayPush.push(osm301);
+                    }
+                    if (element == 'Voceadores') {
+                        var osm302= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9188301604897,19.5450636241935])), name: 'Voceadores',});
+                        arrayPush.push(osm302);
+                    }
+                    if (element == 'Xalapa 2000') {
+                        var osm303= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9031876339014,19.5115499639683])), name: 'Xalapa 2000',});
+                        arrayPush.push(osm303);
+                    }
+                    if (element == 'Zona Centro') {
+                        var osm304= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.921555408611,19.5296275265555])), name: 'Zona Centro',});
+                        arrayPush.push(osm304);
+                    }
+                    if (element == 'Zona Universitaria') {
+                        var osm305= new ol.Feature({geometry: new ol.geom.Point(ol.proj.fromLonLat([-96.9158790918515,19.5142276446443])), name: 'Zona Universitaria',});
+                        arrayPush.push(osm305);
+                    }
+                    if (element == 'Close') {
+                        var addLay = new ol.layer.Vector({
+                            source: new ol.source.Vector({
+                                features: arrayPush
+                            }),
+                            style: new ol.style.Style({
+                                image: new ol.style.Icon({
+                                    anchor: [0.5, 46],
+                                    anchorXUnits: 'fraction',
+                                    anchorYUnits: 'pixels',
+                                    src: 'https://www.google.com/maps/vt/icon/name=assets/icons/poi/tactile/pinlet_shadow_v3-2-medium.png,assets/icons/poi/tactile/pinlet_outline_v3-2-medium.png,assets/icons/poi/tactile/pinlet_v3-2-medium.png,assets/icons/poi/quantum/pinlet/dot_pinlet-2-medium.png&highlight=ff000000,ffffff,7495a6,ffffff?scale=1'
+                                })
+                            })
+                        });
+                        map.addLayer(addLay);
+                    }
                 }
             );
-
-            var addLay = new ol.layer.Vector({
-                source: new ol.source.Vector({
-                    features: [
-                                osm001,
-                                osm002,
-                                osm003,
-                                osm004,
-                                osm005,
-                                osm006,
-                                osm007,
-                                osm008,
-                                osm009,
-                                osm010,
-                                osm011,
-                                osm012,
-                                osm013,
-                                osm014,
-                                osm015,
-                                osm016,
-                                osm017,
-                                osm018,
-                                osm019,
-                                osm020,
-                                osm021,
-                                osm022,
-                                osm023,
-                                osm024,
-                                osm025,
-                                osm026,
-                                osm027,
-                                osm028,
-                                osm029,
-                                osm030,
-                                osm031,
-                                osm032,
-                                osm033,
-                                osm034,
-                                osm035,
-                                osm036,
-                                osm037,
-                                osm038,
-                                osm039,
-                                osm040,
-                                osm041,
-                                osm042,
-                                osm043,
-                                osm044,
-                                osm045,
-                                osm046,
-                                osm047,
-                                osm048,
-                                osm049,
-                                osm050,
-                                osm051,
-                                osm052,
-                                osm053,
-                                osm054,
-                                osm055,
-                                osm056,
-                                osm057,
-                                osm058,
-                                osm059,
-                                osm060,
-                                osm061,
-                                osm062,
-                                osm063,
-                                osm064,
-                                osm065,
-                                osm066,
-                                osm067,
-                                osm068,
-                                osm069,
-                                osm070,
-                                osm071,
-                                osm072,
-                                osm073,
-                                osm074,
-                                osm075,
-                                osm076,
-                                osm077,
-                                osm078,
-                                osm079,
-                                osm080,
-                                osm081,
-                                osm082,
-                                osm083,
-                                osm084,
-                                osm085,
-                                osm086,
-                                osm087,
-                                osm088,
-                                osm089,
-                                osm090,
-                                osm091,
-                                osm092,
-                                osm093,
-                                osm094,
-                                osm095,
-                                osm096,
-                                osm097,
-                                osm098,
-                                osm099,
-                                osm100,
-                                osm101,
-                                osm102,
-                                osm103,
-                                osm104,
-                                osm105,
-                                osm106,
-                                osm107,
-                                osm108,
-                                osm109,
-                                osm110,
-                                osm111,
-                                osm112,
-                                osm113,
-                                osm114,
-                                osm115,
-                                osm116,
-                                osm117,
-                                osm118,
-                                osm119,
-                                osm120,
-                                osm121,
-                                osm122,
-                                osm123,
-                                osm124,
-                                osm125,
-                                osm126,
-                                osm127,
-                                osm128,
-                                osm129,
-                                osm130,
-                                osm131,
-                                osm132,
-                                osm133,
-                                osm134,
-                                osm135,
-                                osm136,
-                                osm137,
-                                osm138,
-                                osm139,
-                                osm140,
-                                osm141,
-                                osm142,
-                                osm143,
-                                osm144,
-                                osm145,
-                                osm146,
-                                osm147,
-                                osm148,
-                                osm149,
-                                osm150,
-                                osm151,
-                                osm152,
-                                osm153,
-                                osm154,
-                                osm155,
-                                osm156,
-                                osm157,
-                                osm158,
-                                osm159,
-                                osm160,
-                                osm161,
-                                osm162,
-                                osm163,
-                                osm164,
-                                osm165,
-                                osm166,
-                                osm167,
-                                osm168,
-                                osm169,
-                                osm170,
-                                osm171,
-                                osm172,
-                                osm173,
-                                osm174,
-                                osm175,
-                                osm176,
-                                osm177,
-                                osm178,
-                                osm179,
-                                osm180,
-                                osm181,
-                                osm182,
-                                osm183,
-                                osm184,
-                                osm185,
-                                osm186,
-                                osm187,
-                                osm188,
-                                osm189,
-                                osm190,
-                                osm191,
-                                osm192,
-                                osm193,
-                                osm194,
-                                osm195,
-                                osm196,
-                                osm197,
-                                osm198,
-                                osm199,
-                                osm200,
-                                osm201,
-                                osm202,
-                                osm203,
-                                osm204,
-                                osm205,
-                                osm206,
-                                osm207,
-                                osm208,
-                                osm209,
-                                osm210,
-                                osm211,
-                                osm212,
-                                osm213,
-                                osm214,
-                                osm215,
-                                osm216,
-                                osm217,
-                                osm218,
-                                osm219,
-                                osm220,
-                                osm221,
-                                osm222,
-                                osm223,
-                                osm224,
-                                osm225,
-                                osm226,
-                                osm227,
-                                osm228,
-                                osm229,
-                                osm230,
-                                osm231,
-                                osm232,
-                                osm233,
-                                osm234,
-                                osm235,
-                                osm236,
-                                osm237,
-                                osm238,
-                                osm239,
-                                osm240,
-                                osm241,
-                                osm242,
-                                osm243,
-                                osm244,
-                                osm245,
-                                osm246,
-                                osm247,
-                                osm248,
-                                osm249,
-                                osm250,
-                                osm251,
-                                osm252,
-                                osm253,
-                                osm254,
-                                osm255,
-                                osm256,
-                                osm257,
-                                osm258,
-                                osm259,
-                                osm260,
-                                osm261,
-                                osm262,
-                                osm263,
-                                osm264,
-                                osm265,
-                                osm266,
-                                osm267,
-                                osm268,
-                                osm269,
-                                osm270,
-                                osm271,
-                                osm272,
-                                osm273,
-                                osm274,
-                                osm275,
-                                osm276,
-                                osm277,
-                                osm278,
-                                osm279,
-                                osm280,
-                                osm281,
-                                osm282,
-                                osm283,
-                                osm284,
-                                osm285,
-                                osm286,
-                                osm287,
-                                osm288,
-                                osm289,
-                                osm290,
-                                osm291,
-                                osm292,
-                                osm293,
-                                osm294,
-                                osm295,
-                                osm296,
-                                osm297,
-                                osm298,
-                                osm299,
-                                osm300,
-                                osm301,
-                                osm302,
-                                osm303,
-                                osm304,
-                                osm305
-                            ]
-                }),
-                style: new ol.style.Style({
-                    image: new ol.style.Icon({
-                        anchor: [0.5, 46],
-                        anchorXUnits: 'fraction',
-                        anchorYUnits: 'pixels',
-                        src: 'https://www.google.com/maps/vt/icon/name=assets/icons/poi/tactile/pinlet_shadow_v3-2-medium.png,assets/icons/poi/tactile/pinlet_outline_v3-2-medium.png,assets/icons/poi/tactile/pinlet_v3-2-medium.png,assets/icons/poi/quantum/pinlet/dot_pinlet-2-medium.png&highlight=ff000000,ffffff,7495a6,ffffff?scale=1'
-                    })
-                })
-            });
-
-            map.addLayer(addLay);
         }
     </script>
 </body>
